@@ -1,0 +1,363 @@
+import asyncio
+import uvloop
+import aiohttp
+import numpy as np
+import logging
+import pwd
+import os
+import tempfile
+from aiohttp import web
+from prometheus_client import Gauge, generate_latest
+from aioari import connect
+from utils import get_env, setup_log
+from rtp import RTPProcessor
+from vad import VadController
+from stt import STTWorker
+from tts import TTSWorker
+from llm import generate_reply
+from dtmf import DTMFHandler
+
+# Configurar uvloop
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+class VoIPAgent:
+    def __init__(self):
+        self.logger = setup_log("app")
+        self.ari_url = get_env("ARI_URL", "http://127.0.0.1:8088")
+        self.ari_user = get_env("ARI_USER", "ari")
+        self.ari_pass = get_env("ARI_PASS", "secret")
+        self.ari_app = get_env("ARI_APP", "agente-ia")
+        self.rtp_in_host = get_env("RTP_IN_HOST", "127.0.0.1")
+        self.rtp_in_port = int(get_env("RTP_IN_PORT", 4000))
+        self.rtp_out_host = get_env("RTP_OUT_HOST", "127.0.0.1")
+        self.rtp_out_port = int(get_env("RTP_OUT_PORT", 4002))
+        self.prometheus_port = int(get_env("PROMETHEUS_PORT", 9091))
+        self.stt = STTWorker()
+        self.tts = TTSWorker()
+        self.rtp = RTPProcessor()
+        self.vad = VadController()
+        self.ari = None
+        self.dtmf = None
+        # Métricas Prometheus
+        self.stt_latency = Gauge("stt_latency_seconds", "Latencia de STT")
+        self.tts_latency = Gauge("tts_latency_seconds", "Latencia de TTS")
+        self.llm_latency = Gauge("llm_latency_seconds", "Latencia de LLM")
+        self.audio_queue = asyncio.Queue()
+
+    async def metrics_handler(self, request):
+        """Endpoint para métricas Prometheus."""
+        return web.Response(body=generate_latest(), content_type="text/plain")
+
+    async def process_audio(self, audio_data):
+        """Procesar audio a través del pipeline STT -> LLM -> TTS."""
+        start_time = asyncio.get_event_loop().time()
+        transcription = await self.stt.process_audio(audio_data)
+        self.stt_latency.set(asyncio.get_event_loop().time() - start_time)
+        if not transcription:
+            return
+        text = " ".join(transcription)
+        self.logger.info(f"Transcripción: {text}")
+        start_time = asyncio.get_event_loop().time()
+        prompt = get_env("LLM_PROMPT", "") + "\nUsuario: " + text
+        reply = generate_reply(prompt)
+        self.llm_latency.set(asyncio.get_event_loop().time() - start_time)
+        self.logger.info(f"Respuesta LLM: {reply}")
+        start_time = asyncio.get_event_loop().time()
+        rate, audio = self.tts.synthesize(reply)
+        self.tts_latency.set(asyncio.get_event_loop().time() - start_time)
+        encoded_audio = self.rtp.encode(audio)
+        self.logger.info("Audio enviado al RTP")
+
+    async def on_channel(self, *args, **kwargs):
+        """Manejar evento StasisStart."""
+        try:
+            if len(args) > 0:
+                event = args[0]
+                self.logger.info(f"Evento StasisStart recibido para canal: {event.get('channel', {}).get('name', 'unknown')}")
+                channel_info = event['channel']
+                channel_id = channel_info['id']
+                channel_name = channel_info['name']
+                caller_number = channel_info.get('caller', {}).get('number', 'unknown')
+                self.logger.info(f"Procesando llamada de {caller_number} en canal {channel_name}")
+                channel_obj = await self.ari.channels.get(channelId=channel_id)
+                await channel_obj.answer()
+                self.logger.info(f"Llamada respondida exitosamente")
+                await self.play_welcome_message(channel_obj)
+                await self.start_audio_processing(channel_obj)
+            else:
+                self.logger.error("No se recibieron argumentos en on_channel")
+        except Exception as e:
+            self.logger.error(f"Error en on_channel: {e}")
+            import traceback
+            self.logger.error(f"Traceback: {traceback.format_exc()}")
+
+    async def play_welcome_message(self, channel):
+        """Reproducir mensaje de bienvenida del asistente de IA - VERSIÓN GSM CORREGIDA."""
+        try:
+            self.logger.info("Reproduciendo mensaje de bienvenida")
+            welcome_text = "Hola, soy tu asistente virtual. ¿En qué puedo ayudarte hoy?"
+            
+            try:
+                rate, audio_data = self.tts.synthesize(welcome_text)
+                self.logger.info("TTS completado exitosamente")
+            except Exception as tts_error:
+                self.logger.error(f"Error en TTS: {tts_error}")
+                await self.play_simple_tone(channel)
+                return
+
+            # CORRECCIÓN DEFINITIVA: Usar GSM como los archivos que funcionan
+            await channel.mute(direction='in')
+            self.logger.info("Audio entrante mutado durante TTS")
+            
+            # Crear archivo SLIN temporal primero
+            tts_filename_base = f"{channel.id.replace('.', '_')}"
+            slin_temp_file = f"/var/lib/asterisk/sounds/tts/{tts_filename_base}_temp.slin"
+            gsm_file = f"/var/lib/asterisk/sounds/tts/{tts_filename_base}.gsm"
+            
+            # Crear SLIN temporal
+            audio_int16 = (audio_data * 32767).astype(np.int16)
+            with open(slin_temp_file, 'wb') as f:
+                f.write(audio_int16.tobytes())
+            
+            self.logger.info(f"Archivo SLIN temporal creado: {slin_temp_file}")
+            
+            # Convertir SLIN a GSM usando sox
+            
+            result = os.system(sox_cmd)
+            
+            if result == 0:
+                self.logger.info(f"Archivo GSM creado exitosamente: {gsm_file}")
+                
+                # Configurar permisos del archivo GSM
+                os.chmod(gsm_file, 0o644)
+                try:
+                    asterisk_user = pwd.getpwnam('asterisk')
+                    os.chown(gsm_file, asterisk_user.pw_uid, asterisk_user.pw_gid)
+                except KeyError:
+                    self.logger.warning("Usuario asterisk no encontrado, manteniendo permisos actuales")
+                
+                # Playback usando GSM (mismo formato que hello-world)
+                playback = await channel.play(media=f"sound:tts/{tts_filename_base}")
+                self.logger.info(f"TTS GSM iniciado para playback {playback.id}")
+                
+                # Esperar PlaybackFinished con sleep estimado (TTS ~15s)
+                await asyncio.sleep(15)
+                self.logger.info(f"Playback TTS completado para {channel.id} (sleep estimado)")
+                
+                # Cleanup ambos archivos después
+                asyncio.create_task(self.cleanup_temp_file(slin_temp_file, 30))
+                asyncio.create_task(self.cleanup_temp_file(gsm_file, 30))
+                
+            else:
+                self.logger.error(f"Error convirtiendo SLIN a GSM con sox")
+                # Fallback: usar archivo SLIN original
+                playback = await channel.play(media=f"sound:tts/{tts_filename_base}_temp")
+                await asyncio.sleep(15)
+                asyncio.create_task(self.cleanup_temp_file(slin_temp_file, 30))
+            
+            await channel.unmute(direction='in')
+            self.logger.info("Audio desmutado")
+            
+        except Exception as e:
+            self.logger.error(f"Error reproduciendo mensaje de bienvenida: {e}")
+            await channel.unmute(direction='in')
+
+    async def play_simple_tone(self, channel):
+        """Reproducir un tono simple como alternativa."""
+        try:
+            await channel.mute(direction='in')
+            playback = await channel.play(media="sound:beep")
+            self.logger.info("Tono simple reproducido")
+            await asyncio.sleep(2)
+            self.logger.info(f"Playback tono completado para {channel.id} (sleep estimado)")
+            await channel.unmute(direction='in')
+        except Exception as e:
+            self.logger.error(f"Error reproduciendo tono simple: {e}")
+            await channel.unmute(direction='in')
+
+    async def cleanup_temp_file(self, filepath, delay_seconds):
+        """Limpiar archivo temporal después de un retraso."""
+        try:
+            await asyncio.sleep(delay_seconds)
+            if os.path.exists(filepath):
+                os.unlink(filepath)
+                self.logger.info(f"Archivo temporal limpiado: {filepath}")
+        except Exception as e:
+            self.logger.error(f"Error limpiando archivo temporal: {e}")
+
+    async def start_audio_processing(self, channel):
+        """Iniciar procesamiento completo de IA conversacional - SIN BRIDGE DURANTE TTS."""
+        try:
+            self.logger.info(f"Iniciando procesamiento de audio para canal {channel.id}")
+            
+            # CORRECCIÓN CRÍTICA: NO crear bridge antes de los audios de prueba
+            # El bridge puede interferir con el flujo de audio hacia el endpoint SIP
+            
+            # Audio de prueba PRIMERO, SIN bridge
+            try:
+                self.logger.info("Reproduciendo audio de prueba con archivos de Asterisk")
+                await channel.mute(direction='in')
+                playback = await channel.play(media="sound:hello-world")
+                self.logger.info(f"Playback hello-world iniciado para {channel.id}")
+                await asyncio.sleep(5)
+                self.logger.info(f"Playback hello-world completado para {channel.id} (sleep estimado)")
+                playback2 = await channel.play(media="sound:demo-congrats")
+                self.logger.info(f"Playback demo-congrats iniciado para {channel.id}")
+                await asyncio.sleep(5)
+                self.logger.info(f"Playback demo-congrats completado para {channel.id} (sleep estimado)")
+                await channel.unmute(direction='in')
+                self.logger.info("Audios de prueba reproducidos exitosamente")
+            except Exception as audio_error:
+                self.logger.error(f"Error con archivos de audio: {audio_error}")
+                await channel.mute(direction='in')
+                playback = await channel.play(media="sound:silence/5")
+                self.logger.info(f"Playback silencio iniciado para {channel.id}")
+                await asyncio.sleep(5)
+                self.logger.info(f"Playback silencio completado para {channel.id} (sleep estimado)")
+                await channel.unmute(direction='in')
+                self.logger.info("Silencio reproducido como fallback")
+            
+            # AHORA crear bridge para hold (después de todos los audios)
+            bridge_id = f"bridge-{channel.id}"
+            bridge = await self.ari.bridges.create(type='mixing', bridgeId=bridge_id)
+            await bridge.addChannel(channel=channel.id)
+            self.logger.info(f"Bridge {bridge_id} creado para hold DESPUÉS de los audios")
+            
+            # Configurar DTMF
+            def on_dtmf(channel_obj, event):
+                digit = event.get('digit', '?')
+                self.logger.info(f"DTMF recibido: {digit}")
+                asyncio.create_task(self.respond_to_dtmf(channel, digit))
+            channel.on_event('ChannelDtmfReceived', on_dtmf)
+            
+            # Mantener canal
+            await self.audio_queue.put(channel)
+            self.logger.info("Procesamiento de audio iniciado - Canal listo para recibir entrada")
+        except Exception as e:
+            self.logger.error(f"Error iniciando procesamiento de audio: {e}")
+
+    async def respond_to_dtmf(self, channel, digit):
+        """Responder a DTMF con audio."""
+        try:
+            self.logger.info(f"Respondiendo a DTMF: {digit}")
+            await channel.mute(direction='in')
+            playback = await channel.play(media=f"sound:digits/{digit}")
+            self.logger.info(f"Playback DTMF {digit} iniciado para {channel.id}")
+            await asyncio.sleep(2)
+            self.logger.info(f"Playback DTMF {digit} completado para {channel.id} (sleep estimado)")
+            await channel.unmute(direction='in')
+            self.logger.info(f"DTMF {digit} respondido exitosamente")
+        except Exception as e:
+            self.logger.error(f"Error respondiendo a DTMF {digit}: {e}")
+            try:
+                await channel.mute(direction='in')
+                playback = await channel.play(media="sound:beep")
+                self.logger.info(f"Playback beep iniciado para {channel.id}")
+                await asyncio.sleep(2)
+                self.logger.info(f"Playback beep completado para {channel.id} (sleep estimado)")
+                await channel.unmute(direction='in')
+                self.logger.info("Tono beep reproducido como fallback")
+            except Exception as beep_error:
+                self.logger.error(f"Error con beep: {beep_error}")
+            finally:
+                await channel.unmute(direction='in')
+
+    async def connect_ari(self):
+        """Conectar a ARI de forma segura."""
+        max_retries = 3
+        retry_delay = 5
+        for attempt in range(max_retries):
+            try:
+                self.logger.info(f"Intentando conectar a ARI (intento {attempt + 1}/{max_retries})")
+                self.ari = await connect(
+                    base_url=self.ari_url,
+                    username=self.ari_user,
+                    password=self.ari_pass
+                )
+                asterisk_info = await self.ari.asterisk.getInfo()
+                self.logger.info(f"Conectado a Asterisk: {asterisk_info['build']['date']}")
+                self.ari.on_event('StasisStart', self.on_channel)
+                self.logger.info(f"Preparado para recibir eventos de: {self.ari_app}")
+                self.logger.info("Iniciando procesamiento WebSocket...")
+                self.dtmf = DTMFHandler(self.ari)
+                self.logger.info("Conexión ARI exitosa")
+                return True
+            except Exception as e:
+                self.logger.error(f"Error en intento {attempt + 1}: {e}")
+                if attempt < max_retries - 1:
+                    self.logger.info(f"Reintentando en {retry_delay} segundos...")
+                    await asyncio.sleep(retry_delay)
+                    retry_delay *= 2
+                else:
+                    self.logger.error("No se pudo conectar a ARI después de todos los intentos")
+                    return False
+
+    async def run(self):
+        """Iniciar el agente VoIP."""
+        self.logger.info("Iniciando VoIP Agent")
+        app = web.Application()
+        app.add_routes([web.get("/metrics", self.metrics_handler)])
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, "0.0.0.0", self.prometheus_port)
+        await site.start()
+        self.logger.info(f"Servidor de métricas iniciado en puerto {self.prometheus_port}")
+        try:
+            if not await self.connect_ari():
+                raise Exception("No se pudo conectar a ARI")
+        except Exception as e:
+            self.logger.error(f"Error conectando a ARI: {e}")
+            raise
+        try:
+            self.logger.info("Iniciando procesamiento de audio y WebSocket...")
+            websocket_task = asyncio.create_task(self.ari.run(apps=[self.ari_app]))
+            audio_task = asyncio.create_task(self.process_audio_loop())
+            await asyncio.gather(websocket_task, audio_task)
+        except KeyboardInterrupt:
+            self.logger.info("Deteniendo VoIP Agent...")
+        except Exception as e:
+            self.logger.error(f"Error fatal: {e}")
+            raise
+        finally:
+            if self.ari:
+                try:
+                    await self.ari.close()
+                except:
+                    pass
+
+    async def process_audio_loop(self):
+        """Loop para procesar canales activos."""
+        while True:
+            try:
+                channel = await asyncio.wait_for(self.audio_queue.get(), timeout=1.0)
+                self.logger.info(f"Canal activo en cola: {channel.id}")
+                while True:
+                    await asyncio.sleep(15)
+                    try:
+                        # Skip state check to avoid error
+                        await channel.setChannelVar(variable='__KEEPALIVE', value='1')
+                        self.logger.info(f"Keep-alive enviado para canal {channel.id}")
+                    except Exception as e:
+                        self.logger.error(f"Error en keep-alive para canal {channel.id}: {e}")
+                        break
+            except asyncio.TimeoutError:
+                continue
+            except Exception as e:
+                self.logger.error(f"Error en process_audio_loop: {e}")
+
+async def main():
+    agent = VoIPAgent()
+    try:
+        await agent.run()
+    except Exception as e:
+        logging.getLogger("app").error(f"Error fatal: {e}")
+        raise
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nVoIP Agent detenido por el usuario")
+    except Exception as e:
+        print(f"Error: {e}")
+        exit(1)

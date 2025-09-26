@@ -1,0 +1,31 @@
+import os
+import numpy as np
+from piper import PiperVoice
+from utils import resample_48k_to_8k, get_env, setup_log
+
+class TTSWorker:
+    def __init__(self):
+        self.logger = setup_log(__name__)
+        self.voice = '/root/.cache/piper/es_MX-claude-high.onnx'
+        self.rate = float(get_env('PIPER_RATE', '1.0'))
+        try:
+            self.model = PiperVoice.load(self.voice)
+            self.logger.info(f"Loaded Piper voice: {self.voice}")
+        except Exception as e:
+            self.logger.error(f"Failed to load Piper voice {self.voice}: {e}")
+            raise
+
+    def synthesize(self, text):
+        """Synthesize text to audio using Piper TTS."""
+        try:
+            audio = self.model.synthesize(
+                text,
+                speaker_id=0,
+                rate=self.rate
+            )
+            # Piper outputs at 48kHz, resample to 8kHz for telephony
+            audio_resampled = resample_48k_to_8k(audio, orig_sr=48000, target_sr=8000)
+            return 8000, audio_resampled.astype(np.int16)
+        except Exception as e:
+            self.logger.error(f"TTS synthesis failed: {e}")
+            return 8000, np.array([], dtype=np.int16)

@@ -1,0 +1,76 @@
+import logging
+import asyncio
+import ari
+
+from config import ARI_URL, ARI_USERNAME, ARI_PASSWORD
+from stt import STTWorker
+from tts import TTSWorker
+from rtp import RTPProcessor
+
+# Configurar logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# --- Clases de Trabajadores (Workers) ---
+# (Asegúrate de que tus archivos stt.py, tts.py y rtp.py estén correctos)
+# class STTWorker: ...
+# class TTSWorker: ...
+# class RTPProcessor: ...
+
+async def on_stasis_start(channel_obj, event):
+    """
+    Manejador para el evento StasisStart, que se dispara cuando
+    una llamada entra en nuestra aplicación Stasis.
+    """
+    channel = channel_obj['channel']
+    logger.info(f"Llamada entrando en Stasis: {channel.get('name')}")
+
+    # 1. Responder la llamada
+    await channel.answer()
+    logger.info(f"Canal {channel.get('name')} respondido.")
+
+    # 2. Reproducir un saludo inicial (ejemplo)
+    # Aquí es donde integrarías tu lógica de TTS
+    await channel.play(media='sound:hello-world')
+    logger.info("Saludo reproducido.")
+
+    # 3. Aquí comenzaría la lógica de la conversación
+    # (STT -> LLM -> TTS) en un bucle.
+    # Por ahora, simplemente colgamos después de 5 segundos.
+    await asyncio.sleep(5)
+
+    # 4. Colgar la llamada
+    logger.info(f"Colgando el canal {channel.get('name')}")
+    await channel.hangup()
+
+
+async def main():
+    """
+    Función principal para conectar a ARI y registrar la aplicación.
+    """
+    async with ari.connect(ARI_URL, ARI_USERNAME, ARI_PASSWORD) as client:
+        logger.info("Conectado a ARI exitosamente.")
+
+        # Registrar el manejador de eventos para nuevas llamadas
+        client.on_channel_event('StasisStart', on_stasis_start)
+
+        # Nombre de la aplicación Stasis que definiste en extensions.conf
+        app_name = "agente-ia"
+        
+        logger.info(f"Registrando la aplicación Stasis '{app_name}'...")
+        await client.applications.subscribe(applicationName=app_name)
+        logger.info(f"Suscripción exitosa. Esperando llamadas...")
+
+        # Mantener el script corriendo para escuchar eventos
+        try:
+            while True:
+                await asyncio.sleep(1)
+        except KeyboardInterrupt:
+            logger.info("Cerrando la conexión con ARI.")
+
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nAgente detenido por el usuario.")

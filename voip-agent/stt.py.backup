@@ -1,0 +1,36 @@
+import asyncio
+import numpy as np
+import whisper_streaming
+from utils import get_env, setup_log
+from vad import VadController
+
+class STTWorker:
+    def __init__(self):
+        self.logger = setup_log("stt")
+        self.model_name = get_env("WHISPER_MODEL", "large-v3-turbo")
+        self.vad = VadController()
+        self.model = whisper_streaming.ASRProcessor(model=self.model_name, device="cpu")  # Usar ASRProcessor
+        self.window_ms = 300  # Ventana de 300 ms
+        self.sample_rate = 16000
+
+    async def process_audio(self, audio):
+        """Procesa audio en streaming con ventanas de 300 ms."""
+        if audio.dtype != np.float32:
+            audio = audio.astype(np.float32) / 32768.0
+        if not self.vad.process(audio):
+            self.logger.info("No se detectó voz")
+            return []
+        window_samples = int(self.sample_rate * self.window_ms / 1000)
+        result = []
+        for i in range(0, len(audio), window_samples):
+            chunk = audio[i:i + window_samples]
+            if len(chunk) < window_samples:
+                break
+            try:
+                text = self.model.transcribe(chunk, language="es-MX")  # Usar método transcribe de ASRProcessor
+                if text:
+                    result.append(text)
+                    self.logger.info(f"Transcripción: {text}")
+            except Exception as e:
+                self.logger.error(f"Error en transcripción: {e}")
+        return result

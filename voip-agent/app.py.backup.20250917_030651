@@ -1,0 +1,323 @@
+import asyncio
+import uvloop
+import aiohttp
+import numpy as np
+import logging
+import pwd
+import os
+from aiohttp import web
+from prometheus_client import Gauge, generate_latest
+from aioari import connect
+from utils import get_env, setup_log
+from rtp import RTPProcessor
+from vad import VadController
+from stt import STTWorker
+from tts import TTSWorker
+from llm import generate_reply
+from dtmf import DTMFHandler
+
+# Configurar uvloop
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+class VoIPAgent:
+    def __init__(self):
+        self.logger = setup_log("app")
+        self.ari_url = get_env("ARI_URL", "http://127.0.0.1:8088")
+        self.ari_user = get_env("ARI_USER", "ari")
+        self.ari_pass = get_env("ARI_PASS", "secret")
+        self.ari_app = get_env("ARI_APP", "agente-ia")
+        self.rtp_in_host = get_env("RTP_IN_HOST", "127.0.0.1")
+        self.rtp_in_port = int(get_env("RTP_IN_PORT", 4000))
+        self.rtp_out_host = get_env("RTP_OUT_HOST", "127.0.0.1")
+        self.rtp_out_port = int(get_env("RTP_OUT_PORT", 4002))
+        self.prometheus_port = int(get_env("PROMETHEUS_PORT", 9091))
+        self.stt = STTWorker()
+        self.tts = TTSWorker()
+        self.rtp = RTPProcessor()
+        self.vad = VadController()
+        self.ari = None
+        self.dtmf = None
+        self.stt_latency = Gauge("stt_latency_seconds", "Latencia de STT")
+        self.tts_latency = Gauge("tts_latency_seconds", "Latencia de TTS")
+        self.llm_latency = Gauge("llm_latency_seconds", "Latencia de LLM")
+        self.audio_queue = asyncio.Queue()
+
+    async def metrics_handler(self, request):
+        """Endpoint para métricas Prometheus."""
+        return web.Response(body=generate_latest(), content_type="text/plain")
+
+    async def process_audio(self, audio_data):
+        """Procesar audio a través del pipeline STT -> LLM -> TTS."""
+        start_time = asyncio.get_event_loop().time()
+        transcription = await self.stt.process_audio(audio_data)
+        self.stt_latency.set(asyncio.get_event_loop().time() - start_time)
+        if not transcription:
+            return
+        text = " ".join(transcription)
+        self.logger.info(f"Transcripción: {text}")
+        start_time = asyncio.get_event_loop().time()
+        prompt = get_env("LLM_PROMPT", "") + "\nUsuario: " + text
+        reply = generate_reply(prompt)
+        self.llm_latency.set(asyncio.get_event_loop().time() - start_time)
+        self.logger.info(f"Respuesta LLM: {reply}")
+        start_time = asyncio.get_event_loop().time()
+        rate, audio = self.tts.synthesize(reply)
+        self.tts_latency.set(asyncio.get_event_loop().time() - start_time)
+        encoded_audio = self.rtp.encode(audio)
+        self.logger.info("Audio enviado al RTP")
+
+    async def on_channel(self, event):
+        """Manejar evento StasisStart - CORREGIDO."""
+        try:
+            self.logger.info(f"Evento StasisStart recibido: {event}")
+            channel_info = event.get('channel', {})
+            channel_id = channel_info.get('id', 'unknown')
+            self.logger.info(f"Procesando canal: {channel_id}")
+            channel_obj = await self.ari.channels.get(channelId=channel_id)
+            await channel_obj.answer()
+            self.logger.info(f"Canal {channel_id} respondido exitosamente")
+            welcome_text = "Hola, soy Claude, tu asistente de IA. ¿En qué puedo ayudarte?"
+            await self.speak_tts_response(channel_obj, welcome_text)
+            await self.audio_queue.put(channel_obj)
+        except Exception as e:
+            self.logger.error(f"Error en on_channel: {e}")
+            import traceback
+            self.logger.error(f"Traceback: {traceback.format_exc()}")
+            try:
+                await self.ari.channels.hangup(channelId=channel_id)
+            except:
+                pass
+
+    async def speak_tts_response(self, channel, text):
+        """Sintetizar y reproducir respuesta TTS."""
+        try:
+            self.logger.info(f"Sintetizando respuesta: {text[:50]}...")
+            rate, audio_data = self.tts.synthesize(text)
+            if len(audio_data) == 0:
+                self.logger.error("TTS no generó audio")
+                return False
+            import tempfile
+            import wave
+            import shutil
+            import pwd
+            with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as tmp_file:
+                with wave.open(tmp_file.name, 'wb') as wav_file:
+                    wav_file.setnchannels(1)
+                    wav_file.setsampwidth(2)
+                    wav_file.setframerate(rate)
+                    audio_int16 = (audio_data * 32767).astype(np.int16)
+                    wav_file.writeframes(audio_int16.tobytes())
+                tts_file = f"/var/lib/asterisk/sounds/tts/{channel.id.replace('.', '_')}.wav"
+                shutil.copy(tmp_file.name, tts_file)
+                os.chmod(tts_file, 0o644)
+                try:
+                    asterisk_user = pwd.getpwnam('asterisk')
+                    os.chown(tts_file, asterisk_user.pw_uid, asterisk_user.pw_gid)
+                except KeyError:
+                    self.logger.warning("Usuario asterisk no encontrado")
+                self.logger.info(f"Archivo TTS creado: {tts_file}")
+                playback = await channel.play(media=f"sound:tts/{channel.id.replace('.', '_')}")
+                self.logger.info("TTS reproducido exitosamente")
+                asyncio.create_task(self.cleanup_temp_file(tmp_file.name, 10))
+                asyncio.create_task(self.cleanup_temp_file(tts_file, 30))
+                return True
+        except Exception as e:
+            self.logger.error(f"Error en speak_tts_response: {e}")
+            return False
+
+    async def cleanup_temp_file(self, filepath, delay_seconds):
+        """Limpiar archivo temporal después de un retraso."""
+        await asyncio.sleep(delay_seconds)
+        if os.path.exists(filepath):
+            os.unlink(filepath)
+            self.logger.debug(f"Archivo temporal limpiado: {filepath}")
+
+    async def play_welcome_message(self, channel):
+        """Reproducir mensaje de bienvenida del asistente de IA."""
+        try:
+            self.logger.info("Reproduciendo mensaje de bienvenida")
+            welcome_text = "Hola, soy Claude, tu asistente de inteligencia artificial. Estoy listo para ayudarte con cualquier pregunta o conversación. ¿En qué puedo asistirte hoy?"
+            await self.speak_tts_response(channel, welcome_text)
+        except Exception as e:
+            self.logger.error(f"Error reproduciendo mensaje de bienvenida: {e}")
+
+    async def play_simple_tone(self, channel):
+        """Reproducir un tono simple como alternativa."""
+        try:
+            playback = await channel.play(media="sound:beep")
+            self.logger.info("Tono simple reproducido")
+        except Exception as e:
+            self.logger.error(f"Error reproduciendo tono simple: {e}")
+
+    async def setup_audio_capture(self, channel):
+        """Configurar captura de audio del canal."""
+        try:
+            self.logger.info("Asistente de IA configurado - Canal listo para conversación")
+            await asyncio.sleep(1)
+            instruction_text = "Puedes hablar conmigo normalmente o presionar números para opciones especiales: 1 para ayuda, 2 para información, 0 para menú."
+            await self.speak_tts_response(channel, instruction_text)
+        except Exception as e:
+            self.logger.error(f"Error configurando captura de audio: {e}")
+
+    async def start_audio_processing(self, channel):
+        """Iniciar procesamiento de IA conversacional."""
+        try:
+            self.logger.info(f"Iniciando asistente de IA para canal {channel.id}")
+            await self.setup_audio_capture(channel)
+            def on_dtmf(channel_obj, event):
+                digit = event.get('digit', '?')
+                self.logger.info(f"DTMF recibido: {digit}")
+                asyncio.create_task(self.handle_intelligent_dtmf(channel, digit))
+            channel.on_event('ChannelDtmfReceived', on_dtmf)
+            asyncio.create_task(self.conversation_loop(channel))
+            await self.audio_queue.put(channel)
+            self.logger.info("Asistente de IA iniciado - Listo para conversación inteligente")
+        except Exception as e:
+            self.logger.error(f"Error iniciando asistente de IA: {e}")
+
+    async def handle_intelligent_dtmf(self, channel, digit):
+        """Manejo inteligente de DTMF con LLM."""
+        try:
+            self.logger.info(f"Procesando DTMF inteligente: {digit}")
+            dtmf_commands = {
+                "1": "El usuario presionó 1. Dile que está en el menú de ayuda y pregúntale en qué necesita asistencia específica.",
+                "2": "El usuario presionó 2. Explícale brevemente quién eres: Claude, un asistente de IA creado por Anthropic, y pregúntale cómo puedes ayudarle.",
+                "3": "El usuario presionó 3. Dile que puede terminar la llamada colgando, o seguir conversando contigo de forma natural.",
+                "0": "El usuario presionó 0. Dile las opciones: presiona 1 para ayuda, 2 para información sobre ti, 3 para instrucciones, o habla naturalmente.",
+                "9": "El usuario presionó 9. Salúdalo de nuevo y pregúntale si quiere reiniciar la conversación.",
+                "*": "El usuario presionó asterisco. Pregúntale si necesita hablar con un operador humano o si puedes ayudarle tú.",
+                "#": "El usuario presionó numeral. Confirma que recibiste su entrada y pregúntale qué necesita."
+            }
+            if digit in dtmf_commands:
+                prompt = f"Eres Claude, un asistente de IA en español mexicano. {dtmf_commands[digit]} Responde de forma natural, amigable y en máximo 2 oraciones."
+            else:
+                prompt = f"El usuario presionó {digit}. Eres Claude, asistente de IA. Responde que recibiste el número {digit} y pregunta cómo puedes ayudarle. Máximo 2 oraciones en español mexicano."
+            start_time = asyncio.get_event_loop().time()
+            response = generate_reply(prompt)
+            self.llm_latency.set(asyncio.get_event_loop().time() - start_time)
+            self.logger.info(f"Respuesta LLM para DTMF {digit}: {response}")
+            await channel.play(media=f"sound:digits/{digit}")
+            await asyncio.sleep(0.5)
+            await self.speak_tts_response(channel, response)
+        except Exception as e:
+            self.logger.error(f"Error en DTMF inteligente {digit}: {e}")
+            try:
+                await channel.play(media=f"sound:digits/{digit}")
+                await asyncio.sleep(0.5)
+                await self.speak_tts_response(channel, f"Recibí el número {digit}. ¿En qué puedo ayudarte?")
+            except:
+                pass
+
+    async def conversation_loop(self, channel):
+        """Bucle de conversación inteligente."""
+        conversation_context = []
+        try:
+            self.logger.info("Iniciando bucle de conversación inteligente")
+            while True:
+                await asyncio.sleep(60)
+                if len(conversation_context) == 0:
+                    responses = [
+                        "¿Hay algo específico en lo que te gustaría que te ayude?",
+                        "Sigo aquí para asistirte. ¿Tienes alguna pregunta?",
+                        "¿En qué más puedo ayudarte hoy?"
+                    ]
+                    response = responses[len(conversation_context) % len(responses)]
+                else:
+                    response = "¿Hay algo más en lo que pueda asistirte? Puedes presionar números para opciones o simplemente hablar."
+                conversation_context.append({"role": "assistant", "content": response})
+                await self.speak_tts_response(channel, response)
+                self.logger.info(f"Respuesta proactiva enviada: {response}")
+                if len(conversation_context) > 10:
+                    conversation_context = conversation_context[-5:]
+        except Exception as e:
+            self.logger.error(f"Error fatal en conversation_loop: {e}")
+
+    async def connect_ari(self):
+        """Conectar a ARI de forma segura."""
+        max_retries = 3
+        retry_delay = 5
+        for attempt in range(max_retries):
+            try:
+                self.logger.info(f"Intentando conectar a ARI (intento {attempt + 1}/{max_retries})")
+                self.ari = await connect(
+                    base_url=self.ari_url,
+                    username=self.ari_user,
+                    password=self.ari_pass
+                )
+                asterisk_info = await self.ari.asterisk.getInfo()
+                self.logger.info(f"Conectado a Asterisk: {asterisk_info['build']['date']}")
+                self.ari.on_event('StasisStart', self.on_channel)
+                await self.ari.applications.subscribe(applicationName=self.ari_app)
+                self.logger.info(f"Aplicación {self.ari_app} registrada en ARI")
+                self.dtmf = DTMFHandler(self.ari)
+                self.logger.info("Conexión ARI exitosa")
+                return True
+            except Exception as e:
+                self.logger.error(f"Error en intento {attempt + 1}: {e}")
+                if attempt < max_retries - 1:
+                    self.logger.info(f"Reintentando en {retry_delay} segundos...")
+                    await asyncio.sleep(retry_delay)
+                    retry_delay *= 2
+                else:
+                    self.logger.error("No se pudo conectar a ARI después de todos los intentos")
+                    return False
+
+    async def run(self):
+        """Iniciar el agente VoIP."""
+        self.logger.info("Iniciando VoIP Agent")
+        app = web.Application()
+        app.add_routes([web.get("/metrics", self.metrics_handler)])
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, "0.0.0.0", self.prometheus_port)
+        await site.start()
+        self.logger.info(f"Servidor de métricas iniciado en puerto {self.prometheus_port}")
+        try:
+            if not await self.connect_ari():
+                raise Exception("No se pudo conectar a ARI")
+            self.logger.info("Conexión ARI exitosa")
+            websocket_task = asyncio.create_task(self.ari.run(apps=[self.ari_app]))
+            audio_task = asyncio.create_task(self.process_audio_loop())
+            await asyncio.gather(websocket_task, audio_task)
+        except KeyboardInterrupt:
+            self.logger.info("Deteniendo VoIP Agent...")
+        except Exception as e:
+            self.logger.error(f"Error fatal: {e}")
+            raise
+        finally:
+            if self.ari:
+                try:
+                    await self.ari.close()
+                except:
+                    pass
+
+    async def process_audio_loop(self):
+        """Loop para procesar canales activos."""
+        while True:
+            try:
+                channel = await asyncio.wait_for(self.audio_queue.get(), timeout=1.0)
+                self.logger.info(f"Canal activo en cola: {channel.id}")
+                test_text = "Hola, soy Claude. Este es un mensaje de prueba del pipeline."
+                await self.speak_tts_response(channel, test_text)
+                self.audio_queue.task_done()
+            except asyncio.TimeoutError:
+                continue
+            except Exception as e:
+                self.logger.error(f"Error en process_audio_loop: {e}")
+
+async def main():
+    agent = VoIPAgent()
+    try:
+        await agent.run()
+    except Exception as e:
+        logging.getLogger("app").error(f"Error fatal: {e}")
+        raise
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nVoIP Agent detenido por el usuario")
+    except Exception as e:
+        print(f"Error: {e}")
+        exit(1)

@@ -1,0 +1,261 @@
+import asyncio
+import uvloop
+import aiohttp
+import numpy as np
+import logging
+from aiohttp import web
+from prometheus_client import Gauge, generate_latest
+from aioari import connect  # Cambio importante: usar connect en lugar de Client
+from utils import get_env, setup_log
+from rtp import RTPProcessor
+from vad import VadController
+from stt import STTWorker
+from tts import TTSWorker
+from llm import generate_reply
+from dtmf import DTMFHandler
+
+# Configurar uvloop
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+class VoIPAgent:
+    def __init__(self):
+        self.logger = setup_log("app")
+        self.ari_url = get_env("ARI_URL", "http://127.0.0.1:8088")
+        self.ari_user = get_env("ARI_USER", "ari")
+        self.ari_pass = get_env("ARI_PASS", "secret")
+        self.ari_app = get_env("ARI_APP", "agente-ia")
+        self.rtp_in_host = get_env("RTP_IN_HOST", "127.0.0.1")
+        self.rtp_in_port = int(get_env("RTP_IN_PORT", 4000))
+        self.rtp_out_host = get_env("RTP_OUT_HOST", "127.0.0.1")
+        self.rtp_out_port = int(get_env("RTP_OUT_PORT", 4002))
+        self.prometheus_port = int(get_env("PROMETHEUS_PORT", 9091))
+        self.stt = STTWorker()
+        self.tts = TTSWorker()
+        self.rtp = RTPProcessor()
+        self.vad = VadController()
+        self.ari = None  # Inicializado en run
+        self.dtmf = None  # Inicializado en run
+        # Métricas Prometheus
+        self.stt_latency = Gauge("stt_latency_seconds", "Latencia de STT")
+        self.tts_latency = Gauge("tts_latency_seconds", "Latencia de TTS")
+        self.llm_latency = Gauge("llm_latency_seconds", "Latencia de LLM")
+        self.audio_queue = asyncio.Queue()
+
+    async def metrics_handler(self, request):
+        """Endpoint para métricas Prometheus."""
+        return web.Response(body=generate_latest(), content_type="text/plain")
+
+    async def process_audio(self, audio_data):
+        """Procesar audio a través del pipeline STT -> LLM -> TTS."""
+        start_time = asyncio.get_event_loop().time()
+        transcription = await self.stt.process_audio(audio_data)
+        self.stt_latency.set(asyncio.get_event_loop().time() - start_time)
+        if not transcription:
+            return
+        text = " ".join(transcription)
+        self.logger.info(f"Transcripción: {text}")
+        start_time = asyncio.get_event_loop().time()
+        prompt = get_env("LLM_PROMPT", "") + "\nUsuario: " + text
+        reply = generate_reply(prompt)
+        self.llm_latency.set(asyncio.get_event_loop().time() - start_time)
+        self.logger.info(f"Respuesta LLM: {reply}")
+        start_time = asyncio.get_event_loop().time()
+        rate, audio = self.tts.synthesize(reply)
+        self.tts_latency.set(asyncio.get_event_loop().time() - start_time)
+        encoded_audio = self.rtp.encode(audio)
+        self.logger.info("Audio enviado al RTP")
+
+    async def on_channel(self, channel, event):
+        """Manejar nuevo canal ARI - FUNCIÓN CORREGIDA."""
+        try:
+            self.logger.info(f"Evento StasisStart recibido: {type(event)} - {event}")
+            
+            # Extraer información del canal del evento
+            # El evento puede venir como objeto o diccionario
+            if hasattr(event, 'channel'):
+                channel_info = event.channel
+                self.logger.info("Usando event.channel")
+            elif hasattr(event, '__dict__') and 'channel' in event.__dict__:
+                channel_info = event.__dict__['channel']
+                self.logger.info("Usando event.__dict__['channel']")
+            elif isinstance(event, dict) and 'channel' in event:
+                channel_info = event['channel']
+                self.logger.info("Usando event['channel'] (dict)")
+            else:
+                self.logger.error(f"No se pudo extraer información del canal del evento")
+                self.logger.error(f"Tipo de evento: {type(event)}")
+                self.logger.error(f"Dir del evento: {dir(event) if hasattr(event, '__dict__') else 'No __dict__'}")
+                self.logger.error(f"Evento completo: {event}")
+                return
+            
+            # Obtener ID del canal
+            if hasattr(channel_info, 'id'):
+                channel_id = channel_info.id
+                self.logger.info(f"Channel ID desde objeto: {channel_id}")
+            elif isinstance(channel_info, dict):
+                channel_id = channel_info.get('id', 'unknown')
+                self.logger.info(f"Channel ID desde dict: {channel_id}")
+            else:
+                channel_id = str(channel_info)
+                self.logger.info(f"Channel ID como string: {channel_id}")
+            
+            self.logger.info(f"Procesando canal: {channel_id}")
+            
+            # Obtener el objeto channel del ARI
+            try:
+                channel_obj = await self.ari.channels.get(channelId=channel_id)
+                self.logger.info(f"Objeto canal obtenido exitosamente: {channel_obj}")
+            except Exception as e:
+                self.logger.error(f"Error obteniendo canal {channel_id}: {e}")
+                return
+            
+            # Responder la llamada
+            try:
+                await channel_obj.answer()
+                self.logger.info(f"Canal {channel_id} respondido exitosamente")
+            except Exception as e:
+                self.logger.error(f"Error respondiendo canal {channel_id}: {e}")
+                return
+            
+            # Agregar a cola de procesamiento de audio
+            try:
+                await self.audio_queue.put(channel_obj)
+                self.logger.info(f"Canal {channel_id} agregado a cola de procesamiento")
+            except Exception as e:
+                self.logger.error(f"Error agregando canal a cola: {e}")
+            
+        except Exception as e:
+            self.logger.error(f"Error general en on_channel: {e}")
+            self.logger.error(f"Tipo de evento: {type(event)}")
+            self.logger.error(f"Evento completo: {event}")
+            # Intentar colgar el canal si algo sale mal
+            try:
+                if 'channel_id' in locals():
+                    await self.ari.channels.hangup(channelId=channel_id)
+                    self.logger.info(f"Canal {channel_id} colgado por error")
+            except Exception as hangup_error:
+                self.logger.error(f"Error colgando canal: {hangup_error}")
+
+    async def connect_ari(self):
+        """Conectar a ARI de forma segura."""
+        max_retries = 3
+        retry_delay = 5
+
+        for attempt in range(max_retries):
+            try:
+                self.logger.info(f"Intentando conectar a ARI (intento {attempt + 1}/{max_retries})")
+
+                # Usar connect en lugar de Client para evitar RecursionError
+                self.ari = await connect(
+                    base_url=self.ari_url,
+                    username=self.ari_user,
+                    password=self.ari_pass
+                )
+
+                # Verificar conexión obteniendo info de Asterisk
+                asterisk_info = await self.ari.asterisk.getInfo()
+                self.logger.info(f"Conectado a Asterisk: {asterisk_info['build']['date']}")
+
+                # Configurar manejadores de eventos
+                self.ari.on_event('StasisStart', self.on_channel)
+
+                # CORRECCIÓN CRÍTICA: Iniciar el procesamiento WebSocket
+                self.logger.info(f"Preparado para recibir eventos de: {self.ari_app}")
+                self.logger.info("Iniciando procesamiento WebSocket...")
+
+                # Inicializar DTMF handler
+                self.dtmf = DTMFHandler(self.ari)
+
+                self.logger.info("Conexión ARI exitosa")
+                return True
+
+            except Exception as e:
+                self.logger.error(f"Error en intento {attempt + 1}: {e}")
+                if attempt < max_retries - 1:
+                    self.logger.info(f"Reintentando en {retry_delay} segundos...")
+                    await asyncio.sleep(retry_delay)
+                    retry_delay *= 2  # Backoff exponencial
+                else:
+                    self.logger.error("No se pudo conectar a ARI después de todos los intentos")
+                    return False
+
+    async def run(self):
+        """Iniciar el agente VoIP."""
+        self.logger.info("Iniciando VoIP Agent")
+
+        # Configurar servidor de métricas
+        app = web.Application()
+        app.add_routes([web.get("/metrics", self.metrics_handler)])
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, "0.0.0.0", self.prometheus_port)
+        await site.start()
+        self.logger.info(f"Servidor de métricas iniciado en puerto {self.prometheus_port}")
+
+        # Conectar con ARI
+        try:
+            if not await self.connect_ari():
+                raise Exception("No se pudo conectar a ARI")
+        except Exception as e:
+            self.logger.error(f"Error conectando a ARI: {e}")
+            raise
+
+        # CORRECCIÓN CRÍTICA: Ejecutar el procesamiento WebSocket con apps
+        try:
+            self.logger.info("Iniciando procesamiento de audio y WebSocket...")
+
+            # Crear tareas para ejecutar en paralelo
+            # CORRECCIÓN PRINCIPAL: agregar apps=[self.ari_app]
+            websocket_task = asyncio.create_task(self.ari.run(apps=[self.ari_app]))
+            audio_task = asyncio.create_task(self.process_audio_loop())
+
+            # Esperar que cualquiera de las tareas termine
+            await asyncio.gather(websocket_task, audio_task)
+
+        except KeyboardInterrupt:
+            self.logger.info("Deteniendo VoIP Agent...")
+        except Exception as e:
+            self.logger.error(f"Error fatal: {e}")
+            raise
+        finally:
+            # Limpiar recursos
+            if self.ari:
+                try:
+                    await self.ari.close()
+                except:
+                    pass
+
+    async def process_audio_loop(self):
+        """Loop separado para procesar audio."""
+        while True:
+            try:
+                # Esperar por canales entrantes
+                channel = await asyncio.wait_for(self.audio_queue.get(), timeout=1.0)
+                self.logger.info(f"Iniciando procesamiento de audio para canal: {channel.id}")
+                
+                # Procesar audio del canal (simulación por ahora)
+                audio_data = np.array([])  # Aquí iría el audio real del RTP
+                await self.process_audio(audio_data)
+                
+            except asyncio.TimeoutError:
+                # Continuar el bucle si no hay canales
+                continue
+            except Exception as e:
+                self.logger.error(f"Error procesando audio: {e}")
+
+async def main():
+    agent = VoIPAgent()
+    try:
+        await agent.run()
+    except Exception as e:
+        logging.getLogger("app").error(f"Error fatal: {e}")
+        raise
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nVoIP Agent detenido por el usuario")
+    except Exception as e:
+        print(f"Error: {e}")
+        exit(1)

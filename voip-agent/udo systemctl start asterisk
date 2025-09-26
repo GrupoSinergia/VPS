@@ -1,0 +1,2290 @@
+Sep 04 04:25:26 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 186.[0m
+Sep 04 04:25:28 srv981794 systemd[1]: Started asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has finished successfully[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished successfully.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 186.[0m
+Sep 04 04:26:40 srv981794 systemd[1]: Stopping asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 826.[0m
+Sep 04 04:26:40 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 04 04:26:40 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 826 and the job result is done.[0m
+Sep 04 04:26:40 srv981794 systemd[1]: asterisk.service: Consumed 1.756s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 04 04:26:40 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 826.[0m
+Sep 04 04:26:41 srv981794 systemd[1]: Started asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has finished successfully[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished successfully.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 826.[0m
+Sep 05 18:03:51 srv981794 systemd[1]: Stopping asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34275.[0m
+Sep 05 18:03:51 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 05 18:03:51 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34275 and the job result is done.[0m
+Sep 05 18:03:51 srv981794 systemd[1]: [0;1;39m[0;1;31m[0;1;39masterisk.service: Consumed 26min 48.468s CPU time, 46.5M memory peak, 0B memory swap peak.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 18:03:51 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34275.[0m
+Sep 05 18:03:52 srv981794 systemd[1]: Started asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has finished successfully[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished successfully.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34275.[0m
+Sep 05 18:23:50 srv981794 systemd[1]: Stopping asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34731.[0m
+Sep 05 18:23:50 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 05 18:23:50 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34731 and the job result is done.[0m
+Sep 05 18:23:50 srv981794 systemd[1]: asterisk.service: Consumed 15.756s CPU time, 46.8M memory peak, 0B memory swap peak.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 18:23:50 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34731.[0m
+Sep 05 18:23:50 srv981794 systemd[1]: Started asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has finished successfully[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished successfully.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34731.[0m
+Sep 05 18:24:08 srv981794 systemd[1]: Stopping asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34845.[0m
+Sep 05 18:24:08 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 05 18:24:08 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34845 and the job result is done.[0m
+Sep 05 18:24:08 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34845.[0m
+Sep 05 18:24:09 srv981794 systemd[1]: Started asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has finished successfully[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished successfully.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34845.[0m
+Sep 05 18:24:28 srv981794 systemd[1]: Stopping asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34959.[0m
+Sep 05 18:24:28 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 05 18:24:28 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34959 and the job result is done.[0m
+Sep 05 18:24:28 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34959.[0m
+Sep 05 18:24:28 srv981794 systemd[1]: Started asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has finished successfully[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished successfully.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 34959.[0m
+Sep 05 18:48:14 srv981794 systemd[1]: Stopping asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35419.[0m
+Sep 05 18:48:14 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 05 18:48:14 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35419 and the job result is done.[0m
+Sep 05 18:48:14 srv981794 systemd[1]: asterisk.service: Consumed 19.575s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 18:48:14 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35419.[0m
+Sep 05 18:48:15 srv981794 systemd[1]: Started asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has finished successfully[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished successfully.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35419.[0m
+Sep 05 18:49:45 srv981794 systemd[1]: Stopping asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35533.[0m
+Sep 05 18:49:45 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 05 18:49:45 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35533 and the job result is done.[0m
+Sep 05 18:49:45 srv981794 systemd[1]: asterisk.service: Consumed 1.932s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 18:49:45 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35533.[0m
+Sep 05 18:49:45 srv981794 systemd[1]: Started asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has finished successfully[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished successfully.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35533.[0m
+Sep 05 19:06:55 srv981794 systemd[1]: Reloading asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A reload job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA reload job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35875.[0m
+Sep 05 19:06:55 srv981794 systemd[1]: Reloaded asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A reload job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA reload job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 35875 and the job result is done.[0m
+Sep 05 23:15:04 srv981794 systemd[1]: Stopping asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 269713.[0m
+Sep 05 23:15:05 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 05 23:15:05 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 269713 and the job result is done.[0m
+Sep 05 23:15:05 srv981794 systemd[1]: asterisk.service: Consumed 3min 26.799s CPU time, 51.5M memory peak, 0B memory swap peak.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:15:05 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 269713.[0m
+Sep 05 23:16:35 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:16:35 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:16:35 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 269713 and the job result is failed.[0m
+Sep 05 23:16:35 srv981794 systemd[1]: asterisk.service: Consumed 1.808s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:16:37 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 1.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:16:37 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 271879.[0m
+Sep 05 23:18:07 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:18:07 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:18:07 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 271879 and the job result is failed.[0m
+Sep 05 23:18:07 srv981794 systemd[1]: asterisk.service: Consumed 1.728s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:18:08 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 2.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:18:08 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 273931.[0m
+Sep 05 23:19:38 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:19:38 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:19:38 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 273931 and the job result is failed.[0m
+Sep 05 23:19:38 srv981794 systemd[1]: asterisk.service: Consumed 1.603s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:19:40 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 3.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:19:40 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 276097.[0m
+Sep 05 23:21:10 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:21:10 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:21:10 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 276097 and the job result is failed.[0m
+Sep 05 23:21:10 srv981794 systemd[1]: asterisk.service: Consumed 1.674s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:21:11 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 4.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:21:11 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 278263.[0m
+Sep 05 23:22:41 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:22:41 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:22:41 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 278263 and the job result is failed.[0m
+Sep 05 23:22:41 srv981794 systemd[1]: asterisk.service: Consumed 1.677s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:22:42 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 5.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:22:42 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 280429.[0m
+Sep 05 23:24:13 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:24:13 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:24:13 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 280429 and the job result is failed.[0m
+Sep 05 23:24:13 srv981794 systemd[1]: asterisk.service: Consumed 1.581s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:24:14 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 6.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:24:14 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 282481.[0m
+Sep 05 23:25:44 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:25:44 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:25:44 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 282481 and the job result is failed.[0m
+Sep 05 23:25:44 srv981794 systemd[1]: asterisk.service: Consumed 1.801s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:25:45 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 7.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:25:45 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 284647.[0m
+Sep 05 23:27:15 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:27:15 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:27:15 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 284647 and the job result is failed.[0m
+Sep 05 23:27:15 srv981794 systemd[1]: asterisk.service: Consumed 1.891s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:27:17 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 8.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:27:17 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 286699.[0m
+Sep 05 23:28:47 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:28:47 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:28:47 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 286699 and the job result is failed.[0m
+Sep 05 23:28:47 srv981794 systemd[1]: asterisk.service: Consumed 1.799s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:28:48 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 9.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:28:48 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 288751.[0m
+Sep 05 23:30:18 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:30:18 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:30:18 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 288751 and the job result is failed.[0m
+Sep 05 23:30:18 srv981794 systemd[1]: asterisk.service: Consumed 1.664s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:30:19 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 10.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:30:19 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 291031.[0m
+Sep 05 23:31:50 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:31:50 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:31:50 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 291031 and the job result is failed.[0m
+Sep 05 23:31:50 srv981794 systemd[1]: asterisk.service: Consumed 1.703s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:31:51 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 11.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:31:51 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 293083.[0m
+Sep 05 23:33:21 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:33:21 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:33:21 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 293083 and the job result is failed.[0m
+Sep 05 23:33:21 srv981794 systemd[1]: asterisk.service: Consumed 1.635s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:33:22 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 12.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:33:22 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 295249.[0m
+Sep 05 23:34:53 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:34:53 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:34:53 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 295249 and the job result is failed.[0m
+Sep 05 23:34:53 srv981794 systemd[1]: asterisk.service: Consumed 1.726s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:34:54 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 13.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:34:54 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 297301.[0m
+Sep 05 23:36:24 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:36:24 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:36:24 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 297301 and the job result is failed.[0m
+Sep 05 23:36:24 srv981794 systemd[1]: asterisk.service: Consumed 1.764s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:36:25 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 14.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:36:25 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 299353.[0m
+Sep 05 23:37:56 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:37:56 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:37:56 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 299353 and the job result is failed.[0m
+Sep 05 23:37:56 srv981794 systemd[1]: asterisk.service: Consumed 1.608s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:37:57 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 15.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:37:57 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 301519.[0m
+Sep 05 23:39:27 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:39:27 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:39:27 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 301519 and the job result is failed.[0m
+Sep 05 23:39:27 srv981794 systemd[1]: asterisk.service: Consumed 1.640s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:39:28 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 16.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:39:28 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 303571.[0m
+Sep 05 23:40:59 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:40:59 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:40:59 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 303571 and the job result is failed.[0m
+Sep 05 23:40:59 srv981794 systemd[1]: asterisk.service: Consumed 1.648s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:41:00 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 17.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:41:00 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 305851.[0m
+Sep 05 23:42:30 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:42:30 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:42:30 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 305851 and the job result is failed.[0m
+Sep 05 23:42:30 srv981794 systemd[1]: asterisk.service: Consumed 1.716s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:42:31 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 18.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:42:31 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 307903.[0m
+Sep 05 23:44:02 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:44:02 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:44:02 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 307903 and the job result is failed.[0m
+Sep 05 23:44:02 srv981794 systemd[1]: asterisk.service: Consumed 1.787s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:44:03 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 19.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:44:03 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 310069.[0m
+Sep 05 23:45:33 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:45:33 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:45:33 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 310069 and the job result is failed.[0m
+Sep 05 23:45:33 srv981794 systemd[1]: asterisk.service: Consumed 1.671s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:45:34 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 20.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:45:34 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 312121.[0m
+Sep 05 23:47:05 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:47:05 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:47:05 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 312121 and the job result is failed.[0m
+Sep 05 23:47:05 srv981794 systemd[1]: asterisk.service: Consumed 1.680s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:47:06 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 21.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:47:06 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 314173.[0m
+Sep 05 23:48:36 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:48:36 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:48:36 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 314173 and the job result is failed.[0m
+Sep 05 23:48:36 srv981794 systemd[1]: asterisk.service: Consumed 1.722s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:48:37 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 22.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:48:37 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 316339.[0m
+Sep 05 23:50:08 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:50:08 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:50:08 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 316339 and the job result is failed.[0m
+Sep 05 23:50:08 srv981794 systemd[1]: asterisk.service: Consumed 1.680s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:50:09 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 23.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:50:09 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 318505.[0m
+Sep 05 23:51:39 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:51:39 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:51:39 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 318505 and the job result is failed.[0m
+Sep 05 23:51:39 srv981794 systemd[1]: asterisk.service: Consumed 1.674s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:51:40 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 24.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:51:40 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 320671.[0m
+Sep 05 23:53:11 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:53:11 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:53:11 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 320671 and the job result is failed.[0m
+Sep 05 23:53:11 srv981794 systemd[1]: asterisk.service: Consumed 1.639s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:53:12 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 25.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:53:12 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 322723.[0m
+Sep 05 23:54:42 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:54:42 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:54:42 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 322723 and the job result is failed.[0m
+Sep 05 23:54:42 srv981794 systemd[1]: asterisk.service: Consumed 1.745s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:54:43 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 26.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:54:43 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 324889.[0m
+Sep 05 23:56:14 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:56:14 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:56:14 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 324889 and the job result is failed.[0m
+Sep 05 23:56:14 srv981794 systemd[1]: asterisk.service: Consumed 1.644s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:56:15 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 27.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:56:15 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 327055.[0m
+Sep 05 23:57:45 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:57:45 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:57:45 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 327055 and the job result is failed.[0m
+Sep 05 23:57:45 srv981794 systemd[1]: asterisk.service: Consumed 1.783s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:57:46 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 28.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:57:46 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 329107.[0m
+Sep 05 23:59:17 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 05 23:59:17 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 05 23:59:17 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 329107 and the job result is failed.[0m
+Sep 05 23:59:17 srv981794 systemd[1]: asterisk.service: Consumed 1.771s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 05 23:59:18 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 29.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 05 23:59:18 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 331273.[0m
+Sep 06 00:00:48 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:00:48 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:00:48 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 331273 and the job result is failed.[0m
+Sep 06 00:00:48 srv981794 systemd[1]: asterisk.service: Consumed 2.357s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:00:49 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 30.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:00:49 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 333667.[0m
+Sep 06 00:02:20 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:02:20 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:02:20 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 333667 and the job result is failed.[0m
+Sep 06 00:02:20 srv981794 systemd[1]: asterisk.service: Consumed 2.014s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:02:21 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 31.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:02:21 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 335719.[0m
+Sep 06 00:03:51 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:03:51 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:03:51 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 335719 and the job result is failed.[0m
+Sep 06 00:03:51 srv981794 systemd[1]: asterisk.service: Consumed 1.801s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:03:52 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 32.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:03:52 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 337885.[0m
+Sep 06 00:05:23 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:05:23 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:05:23 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 337885 and the job result is failed.[0m
+Sep 06 00:05:23 srv981794 systemd[1]: asterisk.service: Consumed 1.663s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:05:24 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 33.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:05:24 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 339937.[0m
+Sep 06 00:06:54 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:06:54 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:06:54 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 339937 and the job result is failed.[0m
+Sep 06 00:06:54 srv981794 systemd[1]: asterisk.service: Consumed 1.750s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:06:55 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 34.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:06:55 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 342103.[0m
+Sep 06 00:08:25 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:08:25 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:08:25 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 342103 and the job result is failed.[0m
+Sep 06 00:08:25 srv981794 systemd[1]: asterisk.service: Consumed 1.751s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:08:27 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 35.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:08:27 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 344269.[0m
+Sep 06 00:09:57 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:09:57 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:09:57 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 344269 and the job result is failed.[0m
+Sep 06 00:09:57 srv981794 systemd[1]: asterisk.service: Consumed 1.814s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:09:58 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 36.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:09:58 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 346321.[0m
+Sep 06 00:11:28 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:11:28 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:11:28 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 346321 and the job result is failed.[0m
+Sep 06 00:11:28 srv981794 systemd[1]: asterisk.service: Consumed 1.872s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:11:29 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 37.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:11:29 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 348601.[0m
+Sep 06 00:13:00 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:13:00 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:13:00 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 348601 and the job result is failed.[0m
+Sep 06 00:13:00 srv981794 systemd[1]: asterisk.service: Consumed 1.796s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:13:01 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 38.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:13:01 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 350653.[0m
+Sep 06 00:14:31 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:14:31 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:14:31 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 350653 and the job result is failed.[0m
+Sep 06 00:14:31 srv981794 systemd[1]: asterisk.service: Consumed 1.782s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:14:32 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 39.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:14:32 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 352819.[0m
+Sep 06 00:16:02 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:16:02 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:16:02 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 352819 and the job result is failed.[0m
+Sep 06 00:16:02 srv981794 systemd[1]: asterisk.service: Consumed 1.748s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:16:03 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 40.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:16:03 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 354871.[0m
+Sep 06 00:17:34 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:17:34 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:17:34 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 354871 and the job result is failed.[0m
+Sep 06 00:17:34 srv981794 systemd[1]: asterisk.service: Consumed 1.735s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:17:35 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 41.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:17:35 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 356923.[0m
+Sep 06 00:19:05 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:19:05 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:19:05 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 356923 and the job result is failed.[0m
+Sep 06 00:19:05 srv981794 systemd[1]: asterisk.service: Consumed 1.703s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:19:06 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 42.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:19:06 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 359089.[0m
+Sep 06 00:20:36 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:20:36 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:20:36 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 359089 and the job result is failed.[0m
+Sep 06 00:20:36 srv981794 systemd[1]: asterisk.service: Consumed 1.817s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:20:38 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 43.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:20:38 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 361255.[0m
+Sep 06 00:22:08 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:22:08 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:22:08 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 361255 and the job result is failed.[0m
+Sep 06 00:22:08 srv981794 systemd[1]: asterisk.service: Consumed 1.738s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:22:09 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 44.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:22:09 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 363421.[0m
+Sep 06 00:23:39 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:23:39 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:23:39 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 363421 and the job result is failed.[0m
+Sep 06 00:23:39 srv981794 systemd[1]: asterisk.service: Consumed 1.686s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:23:41 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 45.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:23:41 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 365473.[0m
+Sep 06 00:25:11 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:25:11 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:25:11 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 365473 and the job result is failed.[0m
+Sep 06 00:25:11 srv981794 systemd[1]: asterisk.service: Consumed 1.687s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:25:12 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 46.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:25:12 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 367639.[0m
+Sep 06 00:26:30 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 06 00:26:30 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 367639 and the job result is done.[0m
+Sep 06 00:26:30 srv981794 systemd[1]: asterisk.service: Consumed 1.646s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:26:30 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 367639.[0m
+Sep 06 00:27:55 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 06 00:27:55 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 367639 and the job result is done.[0m
+Sep 06 00:27:55 srv981794 systemd[1]: asterisk.service: Consumed 1.531s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:27:55 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 367639.[0m
+Sep 06 00:29:06 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 06 00:29:06 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 367639 and the job result is done.[0m
+Sep 06 00:29:06 srv981794 systemd[1]: asterisk.service: Consumed 1.398s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:29:06 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 367639.[0m
+Sep 06 00:30:36 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:30:36 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:30:36 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 367639 and the job result is failed.[0m
+Sep 06 00:30:36 srv981794 systemd[1]: asterisk.service: Consumed 1.775s CPU time, 46.0M memory peak, 0B memory swap peak.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:30:38 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 1.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:30:38 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 375277.[0m
+Sep 06 00:31:14 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 06 00:31:14 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 375277 and the job result is done.[0m
+Sep 06 00:31:14 srv981794 systemd[1]: asterisk.service: Consumed 1.095s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:31:14 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 375277.[0m
+Sep 06 00:32:44 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:32:44 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:32:44 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 375277 and the job result is failed.[0m
+Sep 06 00:32:44 srv981794 systemd[1]: asterisk.service: Consumed 1.694s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:32:46 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 1.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:32:46 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 378359.[0m
+Sep 06 00:34:16 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:34:16 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:34:16 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 378359 and the job result is failed.[0m
+Sep 06 00:34:16 srv981794 systemd[1]: asterisk.service: Consumed 1.849s CPU time.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:34:17 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 2.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:34:17 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 380411.[0m
+Sep 06 00:35:47 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: start operation timed out. Terminating.[0m
+Sep 06 00:35:47 srv981794 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185masterisk.service: Failed with result 'timeout'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has entered the 'failed' state with result 'timeout'.[0m
+Sep 06 00:35:47 srv981794 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start asterisk.service - Asterisk PBX.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 380411 and the job result is failed.[0m
+Sep 06 00:35:47 srv981794 systemd[1]: asterisk.service: Consumed 1.776s CPU time, 45.9M memory peak, 0B memory swap peak.
+[0;38;5;245m░░ [0m[0;32mSubject: Resources consumed by unit runtime[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service completed and consumed the indicated resources.[0m
+Sep 06 00:35:49 srv981794 systemd[1]: asterisk.service: Scheduled restart job, restart counter is at 3.
+[0;38;5;245m░░ [0m[0;32mSubject: Automatic restarting of a unit has been scheduled[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAutomatic restarting of the unit asterisk.service has been scheduled, as the result for[0m
+[0;38;5;245m░░[0m [0;32mthe configured Restart= setting for the unit.[0m
+Sep 06 00:35:49 srv981794 systemd[1]: Starting asterisk.service - Asterisk PBX...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit asterisk.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit asterisk.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 382577.[0m
+Sep 06 00:35:55 srv981794 systemd[1]: asterisk.service: Deactivated successfully.
+[0;38;5;245m░░ [0m[0;32mSubject: Unit succeeded[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit asterisk.service has successfully entered the 'dead' state.[0m
+Sep 06 00:35:55 srv981794 systemd[1]: Stopped asterisk.service - Asterisk PBX.
+[0;38;5;245m░░ [0m[0;32mSubject: A stop job for unit asterisk.service has finished[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA stop job for unit asterisk.service has finished.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 382805 and the job result is done.[0m
