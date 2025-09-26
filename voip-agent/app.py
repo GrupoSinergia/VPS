@@ -6,6 +6,8 @@ import logging
 import pwd
 import os
 import wave
+import concurrent.futures
+from enum import Enum
 from aiohttp import web
 from prometheus_client import Gauge, generate_latest
 from aioari import connect
@@ -17,6 +19,12 @@ from tts import TTSWorker
 from dtmf import DTMFHandler
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+class ConversationState(Enum):
+    LISTENING = "listening"
+    PROCESSING = "processing"
+    SPEAKING = "speaking"
+    INTERRUPTED = "interrupted"
 
 class VoIPAgent:
     def __init__(self):
@@ -30,7 +38,7 @@ class VoIPAgent:
         self.rtp_out_host = get_env("RTP_OUT_HOST", "127.0.0.1")
         self.rtp_out_port = int(get_env("RTP_OUT_PORT", 4002))
         self.prometheus_port = int(get_env("PROMETHEUS_PORT", 9091))
-        self.n8n_webhook = get_env("N8N_WEBHOOK", "http://72.60.116.136:5678/webhook-test/webhook/Voip")
+        self.n8n_webhook = get_env("N8N_WEBHOOK", "http://localhost:5678/webhook/voip-agent")
         self.stt = STTWorker()
         self.tts = TTSWorker()
         self.rtp = RTPProcessor()
@@ -43,22 +51,47 @@ class VoIPAgent:
         self.audio_queue = asyncio.Queue()
         # Diccionario para rastrear canales activos y sus tareas
         self.active_channels = {}
+        # ThreadPool para operaciones síncronas
+        self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
+        # Events para playback
+        self.playback_events = {}
+        # Estados de conversación por canal
+        self.conversation_states = {}
+        # Eventos de interrupción
+        self.interrupt_events = {}
+        # Cache de TTS para respuestas comunes
+        self.tts_cache = {}
+        # Sesión HTTP reutilizable
+        self.http_session = None
+        # Buffer de audio por canal
+        self.audio_buffers = {}
+        # Tiempos de última actividad
+        self.last_activity = {}
 
     async def metrics_handler(self, request):
         return web.Response(body=generate_latest(), content_type="text/plain")
 
     async def process_audio(self, audio_data):
         start_time = asyncio.get_event_loop().time()
-        transcription = await self.stt.process_audio(audio_data)
+
+        # STT asíncrono usando ThreadPoolExecutor
+        loop = asyncio.get_event_loop()
+        transcription = await loop.run_in_executor(
+            self.executor, self.stt.process_audio, audio_data
+        )
+
         self.stt_latency.set(asyncio.get_event_loop().time() - start_time)
         if not transcription:
             self.logger.error("No se obtuvo transcripción")
             return None
         text = " ".join(transcription) if isinstance(transcription, list) else transcription
         self.logger.info(f"Transcripción: {text}")
+
+        # LLM request
         start_time = asyncio.get_event_loop().time()
         response = await self.send_to_n8n(text)
         self.llm_latency.set(asyncio.get_event_loop().time() - start_time)
+
         if not response:
             self.logger.error("No se obtuvo respuesta de n8n")
             return None
@@ -102,7 +135,10 @@ class VoIPAgent:
                     'channel': channel_obj,
                     'processing_task': None
                 }
-                
+
+                # Inicializar estado de conversación
+                self.conversation_states[channel_id] = ConversationState.LISTENING
+
                 await self.play_welcome_message(channel_obj)
                 # Crear tarea de procesamiento de audio y guardar referencia
                 processing_task = asyncio.create_task(self.start_audio_processing(channel_obj))
@@ -136,7 +172,14 @@ class VoIPAgent:
                     # Remover del diccionario de canales activos
                     del self.active_channels[channel_id]
                     self.logger.info(f"Canal {channel_id} limpiado del estado activo")
-                else:
+
+                # Limpiar estado de conversación
+                if channel_id in self.conversation_states:
+                    del self.conversation_states[channel_id]
+                if channel_id in self.interrupt_events:
+                    del self.interrupt_events[channel_id]
+
+                if channel_id not in self.active_channels:
                     self.logger.warning(f"Canal {channel_id} no encontrado en canales activos")
                     
             else:
@@ -149,52 +192,264 @@ class VoIPAgent:
     async def play_welcome_message(self, channel):
         try:
             self.logger.info("Reproduciendo mensaje de bienvenida")
-            welcome_text = "Hola, soy tu asistente virtual. Por favor, mantente en línea y dime tu nombre después del tono. Bip."
+            welcome_text = "Hola, soy tu asistente virtual. Por favor, mantente en línea y háblame después del tono. Puedes interrumpirme en cualquier momento."
             try:
                 start_time = asyncio.get_event_loop().time()
-                rate, audio = self.tts.synthesize(welcome_text)
+                # TTS asíncrono
+                loop = asyncio.get_event_loop()
+                rate, audio = await loop.run_in_executor(
+                    self.executor, self.tts.synthesize, welcome_text
+                )
                 self.tts_latency.set(asyncio.get_event_loop().time() - start_time)
                 self.logger.info("TTS completado exitosamente")
             except Exception as tts_error:
                 self.logger.error(f"Error en TTS: {tts_error}")
                 await self.play_simple_tone(channel)
                 return
-            await channel.mute(direction='in')
-            self.logger.info("Audio entrante mutado durante TTS")
+
+            # NO MUTAR entrada - permitir barge-in
+            self.logger.info("Manteniendo audio entrante activo para barge-in")
             tts_filename = f"{channel.id.replace('.', '_')}"
             tts_file = f"/var/lib/asterisk/sounds/tts/{tts_filename}.slin"
             audio_int16 = (audio * 0.7).astype(np.int16)
-            with open(tts_file, 'wb') as f:
-                f.write(audio_int16.tobytes())
-            os.chmod(tts_file, 0o644)
-            try:
-                asterisk_user = pwd.getpwnam('asterisk')
-                os.chown(tts_file, asterisk_user.pw_uid, asterisk_user.pw_gid)
-            except KeyError:
-                self.logger.warning("Usuario asterisk no encontrado")
+
+            # Escritura asíncrona de archivo
+            await self.write_audio_file(tts_file, audio_int16.tobytes())
+
             self.logger.info(f"Archivo TTS SLIN creado: {tts_file}")
-            playback = await channel.play(media=f"sound:tts/{tts_filename}")
-            self.logger.info(f"TTS iniciado para playback {playback.id}")
-            await asyncio.sleep(15)
-            self.logger.info(f"Playback TTS completado para {channel.id} (sleep estimado)")
-            await channel.unmute(direction='in')
-            self.logger.info("Audio desmutado")
-            asyncio.create_task(self.cleanup_temp_file(tts_file, 300))
+
+            # Reproducir con soporte para barge-in
+            await self.play_with_bargein(channel, f"sound:tts/{tts_filename}", tts_file)
+
         except Exception as e:
             self.logger.error(f"Error reproduciendo mensaje de bienvenida: {e}")
-            await channel.unmute(direction='in')
 
     async def play_simple_tone(self, channel):
         try:
-            await channel.mute(direction='in')
-            playback = await channel.play(media="sound:beep")
+            # NO mutar - permitir barge-in
+            await self.play_with_event_wait(channel, "sound:beep")
             self.logger.info("Tono simple reproducido")
-            await asyncio.sleep(2)
-            self.logger.info(f"Playback tono completado para {channel.id} (sleep estimado)")
-            await channel.unmute(direction='in')
         except Exception as e:
             self.logger.error(f"Error reproduciendo tono simple: {e}")
-            await channel.unmute(direction='in')
+
+    async def write_audio_file(self, filepath, audio_bytes):
+        """Escribe archivo de audio de forma asíncrona"""
+        try:
+            loop = asyncio.get_event_loop()
+            await loop.run_in_executor(self.executor, self._write_audio_sync, filepath, audio_bytes)
+        except Exception as e:
+            self.logger.error(f"Error escribiendo archivo de audio: {e}")
+            raise
+
+    def _write_audio_sync(self, filepath, audio_bytes):
+        """Escritura síncrona de archivo (ejecuta en thread pool)"""
+        with open(filepath, 'wb') as f:
+            f.write(audio_bytes)
+        os.chmod(filepath, 0o644)
+        try:
+            asterisk_user = pwd.getpwnam('asterisk')
+            os.chown(filepath, asterisk_user.pw_uid, asterisk_user.pw_gid)
+        except KeyError:
+            self.logger.warning("Usuario asterisk no encontrado")
+
+    async def play_with_event_wait(self, channel, media, cleanup_file=None):
+        """Reproduce audio y espera evento de finalización"""
+        try:
+            playback = await channel.play(media=media)
+            playback_id = playback.id
+            self.logger.info(f"Playback iniciado: {playback_id}")
+
+            # Crear evento para este playback
+            playback_event = asyncio.Event()
+            self.playback_events[playback_id] = playback_event
+
+            # Configurar listener para evento de finalización
+            def on_playback_finished(playback_obj, event):
+                if playback_event:
+                    playback_event.set()
+                    self.logger.info(f"Playback {playback_id} finalizado por evento")
+
+            playback.on_event('PlaybackFinished', on_playback_finished)
+
+            # Esperar finalización con timeout de seguridad
+            try:
+                await asyncio.wait_for(playback_event.wait(), timeout=30.0)
+            except asyncio.TimeoutError:
+                self.logger.warning(f"Timeout esperando playback {playback_id}")
+
+            # Limpiar evento
+            if playback_id in self.playback_events:
+                del self.playback_events[playback_id]
+
+            # Programar limpieza de archivo
+            if cleanup_file:
+                asyncio.create_task(self.cleanup_temp_file(cleanup_file, 300))
+
+        except Exception as e:
+            self.logger.error(f"Error en playback con eventos: {e}")
+            raise
+
+    async def play_with_bargein(self, channel, media, cleanup_file=None):
+        """Reproduce audio con soporte para barge-in (interrupción por voz)"""
+        try:
+            channel_id = channel.id
+
+            # Marcar como hablando
+            self.conversation_states[channel_id] = ConversationState.SPEAKING
+
+            # Crear evento de interrupción
+            interrupt_event = asyncio.Event()
+            self.interrupt_events[channel_id] = interrupt_event
+
+            playback = await channel.play(media=media)
+            playback_id = playback.id
+            self.logger.info(f"Playback con barge-in iniciado: {playback_id}")
+
+            # Crear evento para finalización normal
+            playback_event = asyncio.Event()
+            self.playback_events[playback_id] = playback_event
+
+            def on_playback_finished(playback_obj, event):
+                if playback_event:
+                    playback_event.set()
+                    self.logger.info(f"Playback {playback_id} finalizado normalmente")
+
+            playback.on_event('PlaybackFinished', on_playback_finished)
+
+            # Iniciar monitoreo de interrupción
+            interrupt_task = asyncio.create_task(self.monitor_interruption(channel))
+
+            # Esperar finalización normal o interrupción
+            done, pending = await asyncio.wait(
+                [playback_event.wait(), interrupt_event.wait()],
+                return_when=asyncio.FIRST_COMPLETED
+            )
+
+            # Cancelar tarea de monitoreo
+            interrupt_task.cancel()
+
+            # Verificar si hubo interrupción
+            interrupted = interrupt_event.is_set()
+
+            if interrupted:
+                self.logger.info(f"Playback {playback_id} interrumpido por usuario")
+                try:
+                    await playback.stop()
+                except:
+                    pass  # El playback puede ya haber terminado
+                # Cambiar estado a interrumpido
+                self.conversation_states[channel_id] = ConversationState.INTERRUPTED
+            else:
+                self.logger.info(f"Playback {playback_id} completado sin interrupción")
+                self.conversation_states[channel_id] = ConversationState.LISTENING
+
+            # Limpiar eventos
+            if playback_id in self.playback_events:
+                del self.playback_events[playback_id]
+            if channel_id in self.interrupt_events:
+                del self.interrupt_events[channel_id]
+
+            # Programar limpieza de archivo
+            if cleanup_file:
+                asyncio.create_task(self.cleanup_temp_file(cleanup_file, 300))
+
+            return interrupted
+
+        except Exception as e:
+            self.logger.error(f"Error en playback con barge-in: {e}")
+            # Limpiar estado en caso de error
+            if channel_id in self.conversation_states:
+                self.conversation_states[channel_id] = ConversationState.LISTENING
+            raise
+
+    async def monitor_interruption(self, channel):
+        """Monitorea audio entrante durante TTS para detectar interrupciones"""
+        try:
+            channel_id = channel.id
+            self.logger.info(f"Iniciando monitoreo de interrupción para canal {channel_id}")
+
+            while (channel_id in self.conversation_states and
+                   self.conversation_states[channel_id] == ConversationState.SPEAKING):
+
+                try:
+                    # Capturar chunks pequeños de audio (100ms)
+                    audio_chunk = await asyncio.wait_for(
+                        self.rtp.receive_audio(channel, duration=0.1),
+                        timeout=0.2
+                    )
+
+                    if audio_chunk is not None:
+                        # Verificar si hay voz usando VAD
+                        loop = asyncio.get_event_loop()
+                        is_speech = await loop.run_in_executor(
+                            self.executor, self.vad.is_speech, audio_chunk
+                        )
+
+                        if is_speech:
+                            self.logger.info(f"Voz detectada durante TTS en canal {channel_id} - Interrumpiendo")
+                            if channel_id in self.interrupt_events:
+                                self.interrupt_events[channel_id].set()
+                            break
+
+                    await asyncio.sleep(0.05)  # 50ms entre checks
+
+                except asyncio.TimeoutError:
+                    # No hay audio, continuar monitoreando
+                    await asyncio.sleep(0.05)
+                    continue
+                except Exception as e:
+                    self.logger.error(f"Error en monitoreo de interrupción: {e}")
+                    break
+
+        except asyncio.CancelledError:
+            self.logger.info(f"Monitoreo de interrupción cancelado para canal {channel_id}")
+        except Exception as e:
+            self.logger.error(f"Error fatal en monitoreo de interrupción: {e}")
+
+    async def get_cached_tts(self, text):
+        """Obtiene TTS con cache para respuestas comunes"""
+        # Crear hash del texto para cache
+        import hashlib
+        text_hash = hashlib.md5(text.encode('utf-8')).hexdigest()[:12]
+
+        if text_hash in self.tts_cache:
+            self.logger.info(f"Cache HIT para TTS: {text[:30]}...")
+            return self.tts_cache[text_hash]
+
+        # TTS asíncrono
+        loop = asyncio.get_event_loop()
+        rate, audio = await loop.run_in_executor(
+            self.executor, self.tts.synthesize, text
+        )
+
+        # Cachear solo respuestas cortas (<100 chars) para evitar uso excesivo de memoria
+        if len(text) < 100 and len(self.tts_cache) < 50:  # Limitar cache a 50 entradas
+            self.tts_cache[text_hash] = (rate, audio)
+            self.logger.info(f"Cache MISS - Guardado: {text[:30]}...")
+
+        return rate, audio
+
+    async def init_common_tts_cache(self):
+        """Pre-genera cache para respuestas comunes"""
+        common_responses = [
+            "Hola, soy tu asistente virtual. Por favor, mantente en línea y dime tu nombre después del tono. Bip.",
+            "Te escucho, por favor continúa.",
+            "Disculpa, no pude entender. ¿Puedes repetir?",
+            "Lo siento, estoy teniendo problemas de conexión. ¿Puedes repetir?",
+            "Disculpa, no pude procesar tu mensaje. ¿Puedes intentar de nuevo?",
+            "Un momento por favor...",
+            "Perfecto, entiendo.",
+            "Muy bien, gracias."
+        ]
+
+        self.logger.info("Pre-generando cache de TTS para respuestas comunes...")
+        for response in common_responses:
+            try:
+                await self.get_cached_tts(response)
+            except Exception as e:
+                self.logger.error(f"Error pre-generando TTS para '{response[:30]}': {e}")
+
+        self.logger.info(f"Cache TTS inicializado con {len(self.tts_cache)} entradas")
 
     async def cleanup_temp_file(self, filepath, delay_seconds):
         try:
@@ -217,78 +472,154 @@ class VoIPAgent:
                 self.logger.info(f"DTMF recibido: {digit}")
                 asyncio.create_task(self.respond_to_dtmf(channel, digit))
             channel.on_event('ChannelDtmfReceived', on_dtmf)
-            # Procesar audio entrante en bucle
-            while channel.id in self.active_channels:  # Solo continuar si el canal está activo
-                try:
-                    self.logger.info("Iniciando captura de audio entrante")
-                    audio_data = await self.rtp.receive_audio(channel, duration=5)
-                    if audio_data is not None:
-                        response = await self.process_audio(audio_data)
-                        if response:
-                            start_time = asyncio.get_event_loop().time()
-                            rate, audio = self.tts.synthesize(response)
-                            self.tts_latency.set(asyncio.get_event_loop().time() - start_time)
-                            tts_filename = f"{channel.id.replace('.', '_')}_response"
-                            tts_file = f"/var/lib/asterisk/sounds/tts/{tts_filename}.slin"
-                            audio_int16 = (audio * 0.7).astype(np.int16)
-                            with open(tts_file, 'wb') as f:
-                                f.write(audio_int16.tobytes())
-                            os.chmod(tts_file, 0o644)
-                            try:
-                                asterisk_user = pwd.getpwnam('asterisk')
-                                os.chown(tts_file, asterisk_user.pw_uid, asterisk_user.pw_gid)
-                            except KeyError:
-                                self.logger.warning("Usuario asterisk no encontrado")
-                            self.logger.info(f"Archivo TTS SLIN creado: {tts_file}")
-                            await channel.mute(direction='in')
-                            playback = await channel.play(media=f"sound:tts/{tts_filename}")
-                            self.logger.info(f"TTS respuesta iniciado para playback {playback.id}")
-                            await asyncio.sleep(15)
-                            await channel.unmute(direction='in')
-                            asyncio.create_task(self.cleanup_temp_file(tts_file, 300))
-                except asyncio.CancelledError:
-                    self.logger.info(f"Procesamiento de audio cancelado para canal {channel.id}")
-                    break
-                except Exception as e:
-                    self.logger.error(f"Error procesando audio entrante: {e}")
-                    break
-            
+            # Procesar audio entrante con VAD continuo
+            await self.continuous_audio_processing(channel)
+
             # Limpiar bridge al finalizar
             try:
                 await bridge.destroy()
                 self.logger.info(f"Bridge {bridge_id} destruido")
             except Exception as e:
                 self.logger.error(f"Error destruyendo bridge: {e}")
-                
+
             await self.audio_queue.put(channel)
             self.logger.info("Procesamiento de audio finalizado")
         except Exception as e:
             self.logger.error(f"Error iniciando procesamiento de audio: {e}")
 
+    async def continuous_audio_processing(self, channel):
+        """Procesamiento continuo de audio con VAD y chunks pequeños para tiempo real"""
+        channel_id = channel.id
+        self.logger.info(f"Iniciando procesamiento continuo para canal {channel_id}")
+
+        audio_buffer = []
+        silence_duration = 0
+        speech_detected = False
+
+        while channel_id in self.active_channels:
+            try:
+                # Capturar chunks pequeños (100ms) para tiempo real
+                audio_chunk = await asyncio.wait_for(
+                    self.rtp.receive_audio(channel, duration=0.1),
+                    timeout=0.2
+                )
+
+                if audio_chunk is None:
+                    silence_duration += 0.1
+                    # Si hay silencio prolongado y ya había voz, procesar buffer
+                    if speech_detected and silence_duration > 1.0:  # 1 segundo de silencio
+                        if audio_buffer:
+                            await self.process_audio_buffer(channel, audio_buffer)
+                            audio_buffer = []
+                            speech_detected = False
+                            silence_duration = 0
+                    continue
+
+                # VAD asíncrono en chunk para detectar voz
+                loop = asyncio.get_event_loop()
+                is_speech = await loop.run_in_executor(
+                    self.executor, self.vad.is_speech, audio_chunk
+                )
+
+                if is_speech:
+                    if not speech_detected:
+                        self.logger.info("🎙️ Inicio de voz detectado - Iniciando captura")
+                        speech_detected = True
+                        audio_buffer = []
+
+                    audio_buffer.append(audio_chunk)
+                    silence_duration = 0
+
+                    # Procesar si buffer es muy largo (evitar memoria excesiva)
+                    if len(audio_buffer) > 50:  # 5 segundos max
+                        await self.process_audio_buffer(channel, audio_buffer)
+                        audio_buffer = []
+                        speech_detected = False
+
+                else:
+                    if speech_detected:
+                        silence_duration += 0.1
+                        # Pequeña pausa en el habla, seguir acumulando
+                        if silence_duration < 0.5:  # 500ms de tolerancia
+                            audio_buffer.append(audio_chunk)
+                        # Pausa más larga, procesar lo acumulado
+                        elif silence_duration > 1.0:  # 1 segundo de silencio
+                            if audio_buffer:
+                                await self.process_audio_buffer(channel, audio_buffer)
+                                audio_buffer = []
+                                speech_detected = False
+                                silence_duration = 0
+
+            except asyncio.TimeoutError:
+                # No hay audio, continuar monitoreando
+                silence_duration += 0.2
+                if speech_detected and silence_duration > 1.5:  # 1.5s timeout
+                    if audio_buffer:
+                        await self.process_audio_buffer(channel, audio_buffer)
+                        audio_buffer = []
+                        speech_detected = False
+                        silence_duration = 0
+                continue
+
+            except asyncio.CancelledError:
+                self.logger.info(f"Procesamiento continuo cancelado para canal {channel_id}")
+                break
+
+            except Exception as e:
+                self.logger.error(f"Error en procesamiento continuo: {e}")
+                await asyncio.sleep(0.1)  # Pequeña pausa antes de continuar
+
+    async def process_audio_buffer(self, channel, audio_buffer):
+        """Procesa buffer de audio acumulado"""
+        try:
+            if not audio_buffer:
+                return
+
+            # Concatenar chunks de audio
+            import numpy as np
+            full_audio = np.concatenate(audio_buffer)
+
+            self.logger.info(f"Procesando buffer de audio ({len(audio_buffer)} chunks)")
+
+            # Procesar con pipeline optimizado
+            response = await self.process_audio(full_audio)
+
+            if response:
+                # TTS con cache
+                start_time = asyncio.get_event_loop().time()
+                rate, audio = await self.get_cached_tts(response)
+                self.tts_latency.set(asyncio.get_event_loop().time() - start_time)
+
+                tts_filename = f"{channel.id.replace('.', '_')}_response_{int(asyncio.get_event_loop().time())}"
+                tts_file = f"/var/lib/asterisk/sounds/tts/{tts_filename}.slin"
+                audio_int16 = (audio * 0.7).astype(np.int16)
+
+                # Escritura asíncrona
+                await self.write_audio_file(tts_file, audio_int16.tobytes())
+
+                self.logger.info(f"Archivo TTS SLIN creado: {tts_file}")
+
+                # Reproducir con soporte para barge-in
+                interrupted = await self.play_with_bargein(channel, f"sound:tts/{tts_filename}", tts_file)
+
+                if interrupted:
+                    self.logger.info("TTS interrumpido, continuando captura")
+
+        except Exception as e:
+            self.logger.error(f"Error procesando buffer de audio: {e}")
+
     async def respond_to_dtmf(self, channel, digit):
         try:
-            self.logger.info(f"Respondiendo a DTMF: {digit}")
-            await channel.mute(direction='in')
-            playback = await channel.play(media=f"sound:digits/{digit}")
-            self.logger.info(f"Playback DTMF {digit} iniciado para {channel.id}")
-            await asyncio.sleep(2)
-            self.logger.info(f"Playback DTMF {digit} completado para {channel.id} (sleep estimado)")
-            await channel.unmute(direction='in')
+            self.logger.info(f"DTMF recibido: {digit}")
+            await self.play_with_event_wait(channel, f"sound:digits/{digit}")
             self.logger.info(f"DTMF {digit} respondido exitosamente")
         except Exception as e:
             self.logger.error(f"Error respondiendo a DTMF {digit}: {e}")
             try:
-                await channel.mute(direction='in')
-                playback = await channel.play(media="sound:beep")
-                self.logger.info(f"Playback beep iniciado para {channel.id}")
-                await asyncio.sleep(2)
-                self.logger.info(f"Playback beep completado para {channel.id} (sleep estimado)")
-                await channel.unmute(direction='in')
+                await self.play_with_event_wait(channel, "sound:beep")
                 self.logger.info("Tono beep reproducido como fallback")
             except Exception as beep_error:
                 self.logger.error(f"Error con beep: {beep_error}")
-            finally:
-                await channel.unmute(direction='in')
 
     async def connect_ari(self):
         max_retries = 3
@@ -329,6 +660,9 @@ class VoIPAgent:
         site = web.TCPSite(runner, "0.0.0.0", self.prometheus_port)
         await site.start()
         self.logger.info(f"Servidor de métricas iniciado en puerto {self.prometheus_port}")
+        # Inicializar cache de TTS
+        await self.init_common_tts_cache()
+
         try:
             if not await self.connect_ari():
                 raise Exception("No se pudo conectar a ARI")
@@ -351,6 +685,15 @@ class VoIPAgent:
                     await self.ari.close()
                 except:
                     pass
+            # Cerrar sesión HTTP
+            if self.http_session:
+                try:
+                    await self.http_session.close()
+                except:
+                    pass
+            # Cerrar ThreadPool
+            if hasattr(self, 'executor'):
+                self.executor.shutdown(wait=True)
 
     async def process_audio_loop(self):
         while True:
