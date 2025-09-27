@@ -12,7 +12,7 @@ from aiohttp import web
 from prometheus_client import Gauge, generate_latest
 from aioari import connect
 from utils import get_env, setup_log
-from rtp import RTPProcessor
+from rtp_fixed import RTPProcessor
 from vad import VadController
 from stt import STTWorker
 from tts import TTSWorker
@@ -34,11 +34,11 @@ class VoIPAgent:
         self.ari_pass = get_env("ARI_PASS", "secret")
         self.ari_app = get_env("ARI_APP", "agente-ia")
         self.rtp_in_host = get_env("RTP_IN_HOST", "127.0.0.1")
-        self.rtp_in_port = int(get_env("RTP_IN_PORT", 4000))
+        self.rtp_in_port = int(get_env("RTP_IN_PORT", 5000))
         self.rtp_out_host = get_env("RTP_OUT_HOST", "127.0.0.1")
-        self.rtp_out_port = int(get_env("RTP_OUT_PORT", 4002))
+        self.rtp_out_port = int(get_env("RTP_OUT_PORT", 5002))
         self.prometheus_port = int(get_env("PROMETHEUS_PORT", 9091))
-        self.n8n_webhook = get_env("N8N_WEBHOOK", "http://localhost:5678/webhook/voip-agent")
+        self.n8n_webhook = get_env("N8N_WEBHOOK", "http://localhost:5679/webhook/voip-agent")
         self.stt = STTWorker()
         self.tts = TTSWorker()
         self.rtp = RTPProcessor()
@@ -321,7 +321,7 @@ class VoIPAgent:
 
             # Esperar finalización normal o interrupción
             done, pending = await asyncio.wait(
-                [playback_event.wait(), interrupt_event.wait()],
+                [asyncio.create_task(playback_event.wait()), asyncio.create_task(interrupt_event.wait())],
                 return_when=asyncio.FIRST_COMPLETED
             )
 

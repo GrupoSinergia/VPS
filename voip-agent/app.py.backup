@@ -41,6 +41,8 @@ class VoIPAgent:
         self.tts_latency = Gauge("tts_latency_seconds", "Latencia de TTS")
         self.llm_latency = Gauge("llm_latency_seconds", "Latencia de LLM")
         self.audio_queue = asyncio.Queue()
+        # Diccionario para rastrear canales activos y sus tareas
+        self.active_channels = {}
 
     async def metrics_handler(self, request):
         return web.Response(body=generate_latest(), content_type="text/plain")
@@ -94,8 +96,18 @@ class VoIPAgent:
                 channel_obj = await self.ari.channels.get(channelId=channel_id)
                 await channel_obj.answer()
                 self.logger.info(f"Llamada respondida exitosamente")
+                
+                # Registrar canal como activo
+                self.active_channels[channel_id] = {
+                    'channel': channel_obj,
+                    'processing_task': None
+                }
+                
                 await self.play_welcome_message(channel_obj)
-                await self.start_audio_processing(channel_obj)
+                # Crear tarea de procesamiento de audio y guardar referencia
+                processing_task = asyncio.create_task(self.start_audio_processing(channel_obj))
+                self.active_channels[channel_id]['processing_task'] = processing_task
+                
             else:
                 self.logger.error("No se recibieron argumentos en on_channel")
         except Exception as e:
@@ -103,10 +115,41 @@ class VoIPAgent:
             import traceback
             self.logger.error(f"Traceback: {traceback.format_exc()}")
 
+    async def on_channel_end(self, *args, **kwargs):
+        try:
+            if len(args) > 0:
+                event = args[0]
+                channel_info = event.get('channel', {})
+                channel_id = channel_info.get('id', 'unknown')
+                channel_name = channel_info.get('name', 'unknown')
+                self.logger.info(f"Evento StasisEnd recibido para canal: {channel_name} (ID: {channel_id})")
+                
+                # Limpiar canal activo y cancelar tareas
+                if channel_id in self.active_channels:
+                    channel_data = self.active_channels[channel_id]
+                    
+                    # Cancelar tarea de procesamiento de audio si existe
+                    if channel_data['processing_task'] and not channel_data['processing_task'].done():
+                        channel_data['processing_task'].cancel()
+                        self.logger.info(f"Tarea de procesamiento cancelada para canal {channel_id}")
+                    
+                    # Remover del diccionario de canales activos
+                    del self.active_channels[channel_id]
+                    self.logger.info(f"Canal {channel_id} limpiado del estado activo")
+                else:
+                    self.logger.warning(f"Canal {channel_id} no encontrado en canales activos")
+                    
+            else:
+                self.logger.error("No se recibieron argumentos en on_channel_end")
+        except Exception as e:
+            self.logger.error(f"Error en on_channel_end: {e}")
+            import traceback
+            self.logger.error(f"Traceback: {traceback.format_exc()}")
+
     async def play_welcome_message(self, channel):
         try:
             self.logger.info("Reproduciendo mensaje de bienvenida")
-            welcome_text = "Hola, soy tu asistente virtual. ¿En qué puedo ayudarte hoy?"
+            welcome_text = "Hola, soy tu asistente virtual. Por favor, mantente en línea y dime tu nombre después del tono. Bip."
             try:
                 start_time = asyncio.get_event_loop().time()
                 rate, audio = self.tts.synthesize(welcome_text)
@@ -175,7 +218,7 @@ class VoIPAgent:
                 asyncio.create_task(self.respond_to_dtmf(channel, digit))
             channel.on_event('ChannelDtmfReceived', on_dtmf)
             # Procesar audio entrante en bucle
-            while True:
+            while channel.id in self.active_channels:  # Solo continuar si el canal está activo
                 try:
                     self.logger.info("Iniciando captura de audio entrante")
                     audio_data = await self.rtp.receive_audio(channel, duration=5)
@@ -203,11 +246,22 @@ class VoIPAgent:
                             await asyncio.sleep(15)
                             await channel.unmute(direction='in')
                             asyncio.create_task(self.cleanup_temp_file(tts_file, 300))
+                except asyncio.CancelledError:
+                    self.logger.info(f"Procesamiento de audio cancelado para canal {channel.id}")
+                    break
                 except Exception as e:
                     self.logger.error(f"Error procesando audio entrante: {e}")
                     break
+            
+            # Limpiar bridge al finalizar
+            try:
+                await bridge.destroy()
+                self.logger.info(f"Bridge {bridge_id} destruido")
+            except Exception as e:
+                self.logger.error(f"Error destruyendo bridge: {e}")
+                
             await self.audio_queue.put(channel)
-            self.logger.info("Procesamiento de audio iniciado - Canal listo para recibir entrada")
+            self.logger.info("Procesamiento de audio finalizado")
         except Exception as e:
             self.logger.error(f"Error iniciando procesamiento de audio: {e}")
 
@@ -250,6 +304,7 @@ class VoIPAgent:
                 asterisk_info = await self.ari.asterisk.getInfo()
                 self.logger.info(f"Conectado a Asterisk: {asterisk_info['build']['date']}")
                 self.ari.on_event('StasisStart', self.on_channel)
+                self.ari.on_event("StasisEnd", self.on_channel_end)
                 self.logger.info(f"Preparado para recibir eventos de: {self.ari_app}")
                 self.logger.info("Iniciando procesamiento WebSocket...")
                 self.dtmf = DTMFHandler(self.ari)

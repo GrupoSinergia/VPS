@@ -1,5 +1,5 @@
 {
-  "name": "VoIP AI Agent Completo",
+  "name": "VoIP AI Agent con Memoria",
   "nodes": [
     {
       "parameters": {
@@ -17,20 +17,33 @@
           }
         }
       },
-      "id": "204532f8-6e94-4cd8-a2fd-29a26e92b033",
+      "id": "webhook-node",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 0],
+      "position": [260, 300],
       "webhookId": "voip-agent"
     },
     {
       "parameters": {
-        "systemMessage": "Eres un asistente virtual especializado para un negocio de automatización y tecnología. Tu personalidad es profesional pero amigable, conciso y siempre dispuesto a ayudar.\n\n**INFORMACIÓN DEL NEGOCIO:**\n- **Nombre**: Negocio de Automatización y Tecnología\n- **Horarios**: Lunes a viernes 9:00 AM - 6:00 PM\n- **Servicios**: Automatización de procesos, desarrollo de software, consultoría IT\n- **Teléfono**: +526147420077\n- **Email**: contacto@negocio.com\n\n**TUS RESPONSABILIDADES:**\n1. **Agendar citas**: Programa reuniones y consultas\n2. **Cancelar/reprogramar citas**: Gestiona cambios de agenda\n3. **Información del negocio**: Horarios, servicios, precios\n4. **Soporte técnico**: Ayuda con productos y servicios\n\n**INSTRUCCIONES CRÍTICAS:**\n- Responde SOLO en español\n- Mantén respuestas cortas (máximo 2 oraciones para VoIP)\n- Si necesitas información específica, pregunta directamente\n- Para citas, solicita: fecha, hora preferida, y motivo\n- Si no puedes ayudar, ofrece transferir \"con un especialista\"\n- Recuerda el contexto de la conversación\n\n**CONTEXTO DE LA LLAMADA:**\nEl usuario está llamando por teléfono y su mensaje fue transcrito automáticamente. Responde de manera natural y útil.",
+        "model": {
+          "model": "llama3.2:3b-instruct-q4_k_m",
+          "options": {
+            "baseURL": "http://localhost:11434",
+            "temperature": 0.7
+          }
+        },
+        "prompt": "Eres un asistente virtual especializado para un negocio de automatización y tecnología. Tu personalidad es profesional pero amigable, conciso y siempre dispuesto a ayudar.\n\n**INFORMACIÓN DEL NEGOCIO:**\n- **Nombre**: Negocio de Automatización y Tecnología\n- **Horarios**: Lunes a viernes 9:00 AM - 6:00 PM\n- **Servicios**: Automatización de procesos, desarrollo de software, consultoría IT\n- **Teléfono**: +526147420077\n- **Email**: contacto@negocio.com\n\n**TUS RESPONSABILIDADES:**\n1. **Agendar citas**: Programa reuniones y consultas\n2. **Cancelar/reprogramar citas**: Gestiona cambios de agenda\n3. **Información del negocio**: Horarios, servicios, precios\n4. **Soporte técnico**: Ayuda con productos y servicios\n\n**INSTRUCCIONES CRÍTICAS:**\n- Responde SOLO en español\n- Mantén respuestas cortas (máximo 2 oraciones para VoIP)\n- Si necesitas información específica, pregunta directamente\n- Para citas, solicita: fecha, hora preferida, y motivo\n- Si no puedes ayudar, ofrece transferir \"con un especialista\"\n- Recuerda el contexto de la conversación\n\n**CONTEXTO DE LA LLAMADA:**\nEl usuario está llamando por teléfono y su mensaje fue transcrito automáticamente. Responde de manera natural y útil.",
+        "memory": {
+          "type": "bufferWindowMemory",
+          "options": {
+            "windowSize": 10
+          }
+        },
         "tools": [
           {
             "name": "agendar_cita",
-            "description": "Agenda una cita para el cliente con el negocio",
+            "description": "Agenda una cita para el cliente",
             "parameters": {
               "type": "object",
               "properties": {
@@ -56,7 +69,7 @@
           },
           {
             "name": "consultar_horarios",
-            "description": "Consulta los horarios disponibles para citas en una fecha específica",
+            "description": "Consulta los horarios disponibles para citas",
             "parameters": {
               "type": "object",
               "properties": {
@@ -69,7 +82,7 @@
           },
           {
             "name": "cancelar_cita",
-            "description": "Cancela una cita existente del cliente",
+            "description": "Cancela una cita existente",
             "parameters": {
               "type": "object",
               "properties": {
@@ -90,68 +103,34 @@
           "maxIterations": 3
         }
       },
-      "id": "ed629be5-82d1-4068-bf1c-a1ac8888d71c",
+      "id": "ai-agent-node",
       "name": "AI Agent VoIP",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
-      "position": [272, 0]
+      "position": [520, 300]
     },
     {
       "parameters": {
         "jsCode": "// Procesar respuesta del AI Agent y formatear para VoIP\nconst userText = $input.first()?.json?.text || '';\nconst agentResponse = $input.first()?.json?.output || 'Lo siento, no pude procesar tu solicitud.';\nconst toolsUsed = $input.first()?.json?.toolCalls || [];\n\n// Log para debugging\nconsole.log('Input del usuario:', userText);\nconsole.log('Respuesta AI Agent:', agentResponse);\nconsole.log('Herramientas utilizadas:', toolsUsed);\n\n// Procesar respuesta del agente\nlet finalResponse = agentResponse;\n\n// Si se usaron herramientas, agregar confirmación\nif (toolsUsed.length > 0) {\n  toolsUsed.forEach(tool => {\n    if (tool.tool === 'agendar_cita') {\n      finalResponse += ' Tu cita ha sido registrada.';\n    } else if (tool.tool === 'cancelar_cita') {\n      finalResponse += ' Tu cita ha sido cancelada.';\n    }\n  });\n}\n\n// Limitar longitud de respuesta para VoIP (máximo 200 caracteres)\nif (finalResponse.length > 200) {\n  finalResponse = finalResponse.substring(0, 197) + '...';\n}\n\n// Detectar intención para analytics\nfunction getIntent(text) {\n  const lowerText = text.toLowerCase();\n  if (lowerText.includes('cita') || lowerText.includes('agendar')) return 'schedule';\n  if (lowerText.includes('cancelar')) return 'cancel';\n  if (lowerText.includes('horario') || lowerText.includes('cuándo')) return 'hours';\n  if (lowerText.includes('servicio') || lowerText.includes('precio')) return 'services';\n  if (lowerText.includes('adiós') || lowerText.includes('gracias')) return 'goodbye';\n  return 'general';\n}\n\nreturn {\n  json: {\n    response: finalResponse,\n    user_input: userText,\n    intent_detected: getIntent(userText),\n    tools_used: toolsUsed.map(t => t.tool),\n    timestamp: new Date().toISOString(),\n    conversation_context: 'voip_call'\n  }\n};"
       },
-      "id": "2ebf8875-099a-4fb5-ab05-3d60e5bfd82b",
+      "id": "process-response-node",
       "name": "Process AI Response",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [560, 0]
+      "position": [780, 300]
     },
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ $json }}",
-        "options": {}
+        "responseBody": "={{ $json }}"
       },
-      "id": "a7eb7369-d626-4179-8a43-aad31a5f42e9",
+      "id": "respond-webhook-node",
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
-      "position": [784, 0]
-    },
-    {
-      "parameters": {
-        "model": "llama3.2:3b-instruct-q4_k_m",
-        "baseURL": "http://localhost:11434",
-        "options": {
-          "temperature": 0.7,
-          "maxTokens": 200,
-          "topP": 0.9
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
-      "typeVersion": 1,
-      "position": [144, 208],
-      "id": "09f1045a-f0b2-4d03-af9b-b0a25689282a",
-      "name": "Ollama Chat Model",
-      "credentials": {
-        "ollamaApi": {
-          "id": "J15shoECrlkZgJKE",
-          "name": "Ollama account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "windowSize": 10
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [288, 208],
-      "id": "d872927f-82dd-4691-9fc2-aca96b1cf35d",
-      "name": "Simple Memory"
+      "position": [1040, 300]
     }
   ],
-  "pinData": {},
   "connections": {
     "Webhook": {
       "main": [
@@ -185,36 +164,15 @@
           }
         ]
       ]
-    },
-    "Ollama Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent VoIP",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent VoIP",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
-  "active": true,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "complete-voip-agent-v1",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  }
+  "staticData": null,
+  "tags": ["voip", "ai-agent", "memoria", "automation"],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-26T04:00:00.000Z",
+  "versionId": "2"
 }

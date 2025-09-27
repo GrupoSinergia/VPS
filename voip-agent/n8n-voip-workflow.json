@@ -1,0 +1,108 @@
+{
+  "name": "VoIP Agent Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "voip-agent",
+        "responseMode": "responseNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
+      },
+      "id": "f458b04a-cce8-4519-9f1b-17b9c7b1e1b1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "webhookId": "voip-agent"
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:3b-instruct-q4_k_m",
+        "options": {
+          "temperature": 0.7
+        },
+        "prompt": "=Eres un asistente virtual para un negocio especializado en automatización y tecnología. Tu trabajo es ayudar con:\n\n1. **Agendar citas**: Programa reuniones y consultas\n2. **Cancelar citas**: Gestiona cancelaciones y reprogramación  \n3. **Información del negocio**: Horarios, servicios, precios\n4. **Soporte técnico**: Ayuda con productos y servicios\n\nContexto del negocio:\n- **Horarios**: Lunes a viernes 9:00 AM - 6:00 PM\n- **Servicios**: Automatización de procesos, desarrollo de software, consultoría IT\n- **Teléfono**: +526147420077\n- **Email**: contacto@negocio.com\n\nTu personalidad:\n- Profesional pero amigable\n- Conciso y directo\n- Siempre dispuesto a ayudar\n\nINSTRUCCIONES CRÍTICAS:\n- Responde SOLO en español\n- Mantén respuestas cortas (máximo 2 oraciones)\n- Si necesitas información específica, pregunta directamente\n- Para citas, solicita: fecha, hora preferida, y motivo\n- Si no puedes ayudar, transfiere a \"un especialista\"\n\nUsuario dice: \"{{$json.text}}\"\n\nResponde de manera natural y útil:",
+        "url": "http://localhost:11434"
+      },
+      "id": "a7c9e123-4d5e-6f7g-8h9i-0j1k2l3m4n5o",
+      "name": "Ollama LLM",
+      "type": "@n8n/n8n-nodes-langchain.lmOllama",
+      "typeVersion": 1,
+      "position": [520, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Procesar respuesta del LLM y formatear para VoIP Agent\nconst userText = $input.first()?.json?.text || '';\nconst llmResponse = $input.first()?.json?.response || 'Lo siento, no pude procesar tu solicitud.';\n\n// Log para debugging\nconsole.log('Input del usuario:', userText);\nconsole.log('Respuesta LLM:', llmResponse);\n\n// Respuestas específicas para acciones del negocio\nlet finalResponse = llmResponse;\n\n// Detectar intención de agendar cita\nif (userText.toLowerCase().includes('cita') || userText.toLowerCase().includes('reunión') || userText.toLowerCase().includes('agendar')) {\n  if (!userText.includes('fecha') || !userText.includes('hora')) {\n    finalResponse = 'Perfecto, te ayudo a agendar una cita. ¿Qué fecha y hora prefieres? Nuestro horario es de lunes a viernes de 9 AM a 6 PM.';\n  }\n}\n\n// Detectar cancelación\nif (userText.toLowerCase().includes('cancelar')) {\n  finalResponse = 'Entiendo que necesitas cancelar. ¿Puedes darme tu nombre y la fecha de tu cita actual para ayudarte?';\n}\n\n// Detectar información del negocio\nif (userText.toLowerCase().includes('horario') || userText.toLowerCase().includes('cuándo') || userText.toLowerCase().includes('hora')) {\n  finalResponse = 'Nuestro horario de atención es de lunes a viernes de 9:00 AM a 6:00 PM. ¿En qué más te puedo ayudar?';\n}\n\n// Detectar servicios\nif (userText.toLowerCase().includes('servicio') || userText.toLowerCase().includes('qué hacen')) {\n  finalResponse = 'Ofrecemos automatización de procesos, desarrollo de software y consultoría IT. ¿Te interesa algún servicio en particular?';\n}\n\n// Respuesta de despedida\nif (userText.toLowerCase().includes('adiós') || userText.toLowerCase().includes('gracias') || userText.toLowerCase().includes('bye')) {\n  finalResponse = 'Ha sido un placer ayudarte. ¡Que tengas un excelente día! Llámanos cuando necesites.';\n}\n\n// Limitar longitud de respuesta para VoIP\nif (finalResponse.length > 200) {\n  finalResponse = finalResponse.substring(0, 200) + '...';\n}\n\nreturn {\n  json: {\n    response: finalResponse,\n    user_input: userText,\n    timestamp: new Date().toISOString(),\n    intent_detected: getIntent(userText)\n  }\n};\n\nfunction getIntent(text) {\n  const lowerText = text.toLowerCase();\n  if (lowerText.includes('cita') || lowerText.includes('agendar')) return 'schedule';\n  if (lowerText.includes('cancelar')) return 'cancel';\n  if (lowerText.includes('horario') || lowerText.includes('cuándo')) return 'hours';\n  if (lowerText.includes('servicio')) return 'services';\n  if (lowerText.includes('adiós') || lowerText.includes('gracias')) return 'goodbye';\n  return 'general';\n}"
+      },
+      "id": "b8d9f234-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
+      "name": "Process Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [780, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "id": "c9e0f345-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1040, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Ollama LLM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama LLM": {
+      "main": [
+        [
+          {
+            "node": "Process Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": ["voip", "agent", "automation"],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-26T03:15:00.000Z",
+  "versionId": "1"
+}
