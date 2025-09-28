@@ -1,0 +1,62 @@
+version: "3.8"
+services:
+  n8n:
+    image: n8nio/n8n
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=n8ndb
+      - DB_POSTGRESDB_USER=n8nuser
+      - DB_POSTGRESDB_PASSWORD=Sparkurlife5.
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=Sparkurlife5.
+      - N8N_HOST=0.0.0.0
+      - GENERIC_TIMEZONE=America/Mexico_City
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - DB_SQLITE_POOL_SIZE=10
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+      - N8N_SECURE_COOKIE=false
+    volumes:
+      - /home/n8nuser/.n8n:/home/node/.n8n
+    depends_on:
+      - postgres
+      - ollama
+    networks:
+      - n8n-ollama-network
+
+  ollama:
+    image: ollama/ollama:latest
+    restart: always
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    volumes:
+      - /root/.ollama:/root/.ollama
+    networks:
+      - n8n-ollama-network
+
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_USER=n8nuser
+      - POSTGRES_PASSWORD=Sparkurlife5.
+      - POSTGRES_DB=n8ndb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - n8n-ollama-network
+
+networks:
+  n8n-ollama-network:
+    external: true
+
+volumes:
+  postgres_data:

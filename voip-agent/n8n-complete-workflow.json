@@ -132,13 +132,7 @@
       "typeVersion": 1,
       "position": [144, 208],
       "id": "09f1045a-f0b2-4d03-af9b-b0a25689282a",
-      "name": "Ollama Chat Model",
-      "credentials": {
-        "ollamaApi": {
-          "id": "J15shoECrlkZgJKE",
-          "name": "Ollama account"
-        }
-      }
+      "name": "Ollama Chat Model"
     },
     {
       "parameters": {
