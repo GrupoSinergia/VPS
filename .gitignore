@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+
+# Asterisk
+*.slin
+/var/spool/asterisk/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups
+*.backup
+*.bak
+*.old
+
+# Temporary
+/tmp/
+*.tmp
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3

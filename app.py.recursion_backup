@@ -1,0 +1,109 @@
+import asyncio
+import uvloop
+import aiohttp
+from aiohttp import web
+from prometheus_client import Gauge, generate_latest
+from aioari import Client
+from utils import get_env, setup_log
+from rtp import RTPProcessor
+from vad import VadController
+from stt import STTWorker
+from tts import TTSWorker
+from llm import generate_reply
+from dtmf import DTMFHandler
+
+# Configurar uvloop
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+class VoIPAgent:
+    def __init__(self):
+        self.logger = setup_log("app")
+        self.ari_url = get_env("ARI_URL", "http://127.0.0.1:8088")
+        self.ari_user = get_env("ARI_USER", "ari")
+        self.ari_pass = get_env("ARI_PASS", "secret")
+        self.ari_app = get_env("ARI_APP", "agente-ia")
+        self.rtp_in_host = get_env("RTP_IN_HOST", "127.0.0.1")
+        self.rtp_in_port = int(get_env("RTP_IN_PORT", 4000))
+        self.rtp_out_host = get_env("RTP_OUT_HOST", "127.0.0.1")
+        self.rtp_out_port = int(get_env("RTP_OUT_PORT", 4002))
+        self.prometheus_port = int(get_env("PROMETHEUS_PORT", 9090))
+        self.stt = STTWorker()
+        self.tts = TTSWorker()
+        self.rtp = RTPProcessor()
+        self.vad = VadController()
+        self.ari = None  # Inicializado en run
+        self.dtmf = None  # Inicializado en run
+        self.http_client = None  # Inicializado en run
+        # Métricas Prometheus
+        self.stt_latency = Gauge("stt_latency_seconds", "Latencia de STT")
+        self.tts_latency = Gauge("tts_latency_seconds", "Latencia de TTS")
+        self.llm_latency = Gauge("llm_latency_seconds", "Latencia de LLM")
+        self.audio_queue = asyncio.Queue()
+
+    async def metrics_handler(self, request):
+        """Endpoint para métricas Prometheus."""
+        return web.Response(body=generate_latest(), content_type="text/plain")
+
+    async def process_audio(self, audio_data):
+        """Procesar audio a través del pipeline STT -> LLM -> TTS."""
+        start_time = asyncio.get_event_loop().time()
+        transcription = await self.stt.process_audio(audio_data)
+        self.stt_latency.set(asyncio.get_event_loop().time() - start_time)
+        if not transcription:
+            return
+        text = " ".join(transcription)
+        self.logger.info(f"Transcripción: {text}")
+        start_time = asyncio.get_event_loop().time()
+        prompt = get_env("LLM_PROMPT", "") + "\nUsuario: " + text
+        reply = generate_reply(prompt)
+        self.llm_latency.set(asyncio.get_event_loop().time() - start_time)
+        self.logger.info(f"Respuesta LLM: {reply}")
+        start_time = asyncio.get_event_loop().time()
+        rate, audio = self.tts.synthesize(reply)
+        self.tts_latency.set(asyncio.get_event_loop().time() - start_time)
+        encoded_audio = self.rtp.encode(audio)
+        self.logger.info("Audio enviado al RTP")
+
+    async def on_channel(self, channel, event):
+        """Manejar nuevo canal ARI."""
+        self.logger.info(f"Nuevo canal: {channel.id}")
+        await self.audio_queue.put(channel)
+
+    async def run(self):
+        """Iniciar el agente VoIP."""
+        self.logger.info("Iniciando VoIP Agent")
+        app = web.Application()
+        app.add_routes([web.get("/metrics", self.metrics_handler)])
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, "0.0.0.0", self.prometheus_port)
+        await site.start()
+        self.logger.info(f"Servidor de métricas iniciado en puerto {self.prometheus_port}")
+        # Conectar con ARI
+        try:
+            auth = aiohttp.BasicAuth(self.ari_user, self.ari_pass)
+            self.http_client = aiohttp.ClientSession(auth=auth)
+            self.ari = Client(self.ari_url, self.http_client)
+            await self.ari.connect(self.ari_app)
+            self.dtmf = DTMFHandler(self.ari)
+            self.ari.on_event('StasisStart', self.on_channel)
+            self.logger.info("Conexión ARI exitosa")
+        except Exception as e:
+            self.logger.error(f"Error conectando a ARI: {e}")
+            raise
+        # Procesar audio en cola
+        try:
+            while True:
+                channel = await self.audio_queue.get()
+                audio_data = np.array([])  # Simulación
+                await self.process_audio(audio_data)
+        finally:
+            if self.http_client:
+                await self.http_client.close()
+
+async def main():
+    agent = VoIPAgent()
+    await agent.run()
+
+if __name__ == "__main__":
+    asyncio.run(main())

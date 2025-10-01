@@ -1,0 +1,75 @@
+import os
+import asyncio
+import logging
+import numpy as np
+from dotenv import load_dotenv
+# import speexdsp  # Comentado temporalmente por incompatibilidad
+from scipy.signal import resample
+
+# Load environment variables
+load_dotenv()
+
+def get_env(key, default=None):
+    """Retrieve environment variable with optional default."""
+    return os.getenv(key, default)
+
+def setup_log(name):
+    """Set up logging with specified name."""
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+    return logging.getLogger(name)
+
+def resample_48k_to_8k(audio, orig_sr=48000, target_sr=8000):
+    """Resample audio from 48kHz to 8kHz."""
+    if orig_sr == target_sr:
+        return audio
+    num_samples = int(len(audio) * target_sr / orig_sr)
+    return resample(audio, num_samples)
+
+# def apply_aec(input_audio, output_audio, sample_rate=8000):
+#     """Apply acoustic echo cancellation using SpeexDSP."""
+#     aec = speexdsp.EchoCanceller(
+#         frame_size=128,  # 16ms at 8kHz
+#         filter_length=1024,
+#         sample_rate=sample_rate
+#     )
+#     return aec.process(input_audio, output_audio)
+
+def write_wave(path, rate, data):
+    """Write audio data to WAV file."""
+    import soundfile as sf
+    sf.write(path, data, rate)
+
+def read_wave(path):
+    """Read audio data from WAV file."""
+    import soundfile as sf
+    data, rate = sf.read(path)
+    return rate, data
+
+def preprocess_audio(data, rate, target_rate=8000):
+    """Preprocess audio data."""
+    # Convertir a numpy array si no lo es
+    if not isinstance(data, np.ndarray):
+        data = np.array(data)
+    
+    # Si es estéreo, convertir a mono
+    if len(data.shape) > 1 and data.shape[1] > 1:
+        data = np.mean(data, axis=1)
+    
+    # Normalizar a float32
+    if data.dtype != np.float32:
+        if data.dtype == np.int16:
+            data = data.astype(np.float32) / 32768.0
+        elif data.dtype == np.int32:
+            data = data.astype(np.float32) / 2147483648.0
+        else:
+            data = data.astype(np.float32)
+    
+    # Resample si es necesario
+    if rate != target_rate:
+        data = resample_48k_to_8k(data, rate, target_rate)
+        rate = target_rate
+    
+    return data, rate
