@@ -11,6 +11,7 @@ from prometheus_client import Gauge, generate_latest
 from aioari import connect
 from utils import get_env, setup_log
 from rtp_realtime import RealtimeRTPProcessor
+from rtp_streaming import StreamingRTPProcessor
 from vad import VadController
 from stt import STTWorker
 from tts import TTSWorker
@@ -33,8 +34,9 @@ class VoIPAgent:
         self.n8n_webhook = get_env("N8N_WEBHOOK", "http://0.0.0.0:5678/webhook/my-workflow")
         self.stt = STTWorker()
         self.tts = TTSWorker()
-        self.rtp = RealtimeRTPProcessor()
         self.vad = VadController()
+        self.rtp = RealtimeRTPProcessor()
+        self.rtp_streaming = StreamingRTPProcessor(self.vad)
         self.ari = None
         self.dtmf = None
         self.stt_latency = Gauge("stt_latency_seconds", "Latencia de STT")
@@ -225,25 +227,22 @@ class VoIPAgent:
                 self.logger.info(f"DTMF recibido: {digit}")
                 asyncio.create_task(self.respond_to_dtmf(channel, digit))
             channel.on_event('ChannelDtmfReceived', on_dtmf)
-            # Procesar audio entrante en bucle con captura EN TIEMPO REAL
+            # Procesar audio entrante en bucle con STREAMING + VAD automático
             while channel.id in self.active_channels:  # Solo continuar si el canal está activo
                 try:
-                    self.logger.info("🎙️ Iniciando captura de audio EN TIEMPO REAL")
+                    self.logger.info("🎙️ Iniciando captura STREAMING con detección automática de fin de frase")
                     # CRÍTICO: Pasar el BRIDGE no el channel, porque el canal está dentro del bridge
                     # Asterisk ARI no permite grabar un canal que está en un bridge
-                    audio_data = await self.rtp.capture_audio_realtime(bridge=bridge, duration=5)
+                    # STREAMING: Detecta automáticamente cuando usuario termina de hablar (400ms pausa)
+                    audio_data = await self.rtp_streaming.capture_audio_streaming(bridge=bridge, max_duration=10)
 
                     if audio_data is not None and len(audio_data) > 0:
                         self.logger.info(f"✅ Audio recibido: {len(audio_data)} samples")
 
-                        # Validar con VAD antes de procesar
-                        audio_float = audio_data.astype(np.float32) / 32768.0
-                        if self.vad.process(audio_float):
-                            self.logger.info("🎙️ VOZ DETECTADA - Procesando con STT")
-                            response = await self.process_audio(audio_data)
-                        else:
-                            self.logger.warning("⚠️ No se detectó voz en el audio capturado")
-                            response = None
+                        # STREAMING: VAD ya se ejecutó dentro de capture_audio_streaming
+                        # Si llegamos aquí, el audio YA tiene voz detectada
+                        self.logger.info("🎙️ VOZ DETECTADA (streaming VAD) - Procesando con STT")
+                        response = await self.process_audio(audio_data)
                         if response:
                             start_time = asyncio.get_event_loop().time()
                             rate, audio = self.tts.synthesize(response)
