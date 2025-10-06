@@ -10,7 +10,7 @@ import os
 class STTWorker:
     def __init__(self):
         self.logger = setup_log("stt")
-        self.model_name = get_env("WHISPER_MODEL", "large-v3-turbo")
+        self.model_name = get_env("WHISPER_MODEL", "base")  # Optimizado para VoIP tiempo real
         self.vad = VadController()
         self.sample_rate = 8000  # Ajustado a 8kHz para compatibilidad con Asterisk
         try:
@@ -54,13 +54,16 @@ class STTWorker:
 
             self.logger.info(f"Archivo WAV temporal creado: {tmp_path}")
 
-            # Transcribir con faster-whisper
+            # Transcribir con faster-whisper OPTIMIZADO para baja latencia
             segments, info = self.model.transcribe(
                 tmp_path,
                 language="es",
                 task="transcribe",
-                vad_filter=True,
-                vad_parameters=dict(min_silence_duration_ms=500),
+                beam_size=1,  # Greedy decoding (5x más rápido que default beam_size=5)
+                temperature=0.0,  # Decisiones determinísticas sin sampling
+                vad_filter=False,  # VAD ya se hace externamente con Silero
+                condition_on_previous_text=False,  # Sin contexto entre segmentos
+                without_timestamps=True,  # Más rápido sin timestamps
                 word_timestamps=False
             )
 

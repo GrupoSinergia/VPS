@@ -157,10 +157,10 @@ class RealtimeRTPProcessor:
         rms = np.sqrt(np.mean(audio_abs.astype(np.float64) ** 2))
         mean_amplitude = np.mean(audio_abs)
 
-        # Umbrales REDUCIDOS para mayor sensibilidad
-        MIN_MAX_AMPLITUDE = 50    # Reducido de 100
-        MIN_RMS = 25              # Reducido de 50
-        MIN_MEAN = 15             # Reducido de 30
+        # Umbrales OPTIMIZADOS para telefonía VoIP real (codecs G.711, Opus)
+        MIN_MAX_AMPLITUDE = 250   # Ajustado para voz comprimida VoIP (era 500)
+        MIN_RMS = 80              # RMS mínimo para voz inteligible
+        MIN_MEAN = 25             # Media ajustada para telefonía
 
         self.logger.debug(f"📊 Audio stats: max={max_amplitude}, rms={rms:.2f}, mean={mean_amplitude:.2f}")
 
