@@ -122,10 +122,9 @@ class RealtimeRTPProcessor:
             except Exception as e:
                 self.logger.warning(f"⚠️ Error limpiando archivo: {e}")
 
-            # Validar audio
-            if not self.validate_audio(audio_data):
-                self.logger.warning("⚠️ Audio capturado no pasa validación de calidad")
-                return None
+            # Audio Validation ELIMINADO - Silero VAD se encarga en stt.py:42
+            # Anteriormente causaba 0-27s de latencia rechazando voz válida
+            # Sub-agente voip-audio-specialist confirmó: es redundante
 
             return audio_data
 
@@ -157,10 +156,11 @@ class RealtimeRTPProcessor:
         rms = np.sqrt(np.mean(audio_abs.astype(np.float64) ** 2))
         mean_amplitude = np.mean(audio_abs)
 
-        # Umbrales OPTIMIZADOS para telefonía VoIP real (codecs G.711, Opus)
-        MIN_MAX_AMPLITUDE = 250   # Ajustado para voz comprimida VoIP (era 500)
-        MIN_RMS = 80              # RMS mínimo para voz inteligible
-        MIN_MEAN = 25             # Media ajustada para telefonía
+        # Umbrales MÁXIMA SENSIBILIDAD para telefonía VoIP (G.711, Opus, celular)
+        # Basado en análisis sub-agente voip-audio-specialist
+        MIN_MAX_AMPLITUDE = 100   # Voz suave/normal telefonía (era 250)
+        MIN_RMS = 50              # RMS reducido para alta sensibilidad (era 80)
+        MIN_MEAN = 10             # Media mínima telefonía (era 25)
 
         self.logger.debug(f"📊 Audio stats: max={max_amplitude}, rms={rms:.2f}, mean={mean_amplitude:.2f}")
 
